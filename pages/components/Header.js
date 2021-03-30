@@ -30,9 +30,16 @@ const Wrapper = styled.nav`
   display: flex;
   background: rgb(0, 0, 0);
   justify-content: flex-end;
-  padding: 15px 153px 15px 0;
+  align-items: center;
+  padding-right: 153px;
   color: #fff;
   font-size: 14px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  height: 80px;
 
   ul {
     display: flex;
@@ -43,6 +50,10 @@ const Wrapper = styled.nav`
       display: flex;
       align-items: center;
       cursor: pointer;
+
+      a:hover {
+        opacity: 0.8;
+      }
 
       .icon-down {
         color: #e4ad2b;
