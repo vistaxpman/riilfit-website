@@ -73,7 +73,7 @@ export default function Carousel() {
 }
 
 const Wrapper = styled.div`
-  height: 500px;
+  height: 450px;
   position: relative;
 
   .each-slide > div {
@@ -81,7 +81,7 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     background-size: cover;
-    height: 500px;
+    height: 450px;
   }
 
   .each-slide span {
