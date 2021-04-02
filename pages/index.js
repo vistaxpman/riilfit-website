@@ -127,19 +127,53 @@ export default function Home() {
                     <div>
                       <GooglePlayIcon />
                       <div>
-                        <span>Get it on</span>
-                        <span>Google Play</span>
+                        <span>Get Dreambodi</span>
+                        <span className="btn-app-store">Google Play</span>
                       </div>
                     </div>
                     <div>
                       <AppleIcon />
                       <div>
-                        <span>Get it on</span>
-                        <span>Google Play</span>
+                        <span>Get Dreambodi</span>
+                        <span className="btn-app-store">App Store</span>
                       </div>
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+            <div className="row4 px-20 py-16">
+              <h2 className="text-2xl font-semibold mb-2">
+                Subscribe to our Newsletter
+              </h2>
+              <span className="block text-sm w-2/5 font-light mb-8">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam.
+              </span>
+              <div className="h-10">
+                <input
+                  className="w-1/5 border-1 border-r-0 rounded"
+                  type="text"
+                  placeholder="Type your email here.."
+                />
+                <button className="custom-orange h-full px-4 text-white custom-border border-1 rounded">
+                  SUBSCRIBE
+                </button>
+              </div>
+            </div>
+            <div className="bg-white flex justify-between px-20 pt-16 pb-10">
+              <div className="flex flex-col w-3/10">
+                <img
+                  className="w-48 h-20 object-contain mb-4"
+                  src="/assets/homepage/logo.svg"
+                />
+                <h4 className="font-medium mb-2">Your business partner solutions</h4>
+                <span className="text-sm font-extralight">
+                  We make fitness fun, effective and simple. Our coaches lead
+                  the fitness industry when it comes to helping people get into
+                  the best shape.
+                </span>
               </div>
             </div>
           </section>
@@ -270,18 +304,20 @@ const Wrapper = styled.main`
         background: #f4f4f4;
         border-top-right-radius: 80px;
         display: flex;
+        justify-content: center;
         padding: 3% 7%;
 
         > img:nth-child(1) {
           border-radius: 10px 7px 7px 70px;
           margin-right: 10%;
-          height: 350px;
-          width: 250px;
+          height: 370px;
+          width: 25%;
         }
 
         > div:nth-child(2) {
           display: flex;
           flex-direction: column;
+          width: 45%;
 
           > div:nth-child(1) {
             display: flex;
@@ -318,7 +354,7 @@ const Wrapper = styled.main`
             > div {
               display: flex;
               flex-direction: column;
-              width: 28%;
+              width: 42%;
               background: #ffffff;
               box-shadow: 0px 26px 40px rgba(0, 0, 0, 0.12);
               border-radius: 16px;
@@ -438,11 +474,17 @@ const Wrapper = styled.main`
                   height: 20px;
                   width: 20px;
                   color: #ffbf00;
+                  margin-right: 10px;
                 }
 
                 > div:nth-child(2) {
                   display: flex;
                   flex-direction: column;
+                  font-size: 13px;
+
+                  > .btn-app-store {
+                    font-weight: bold;
+                  }
                 }
               }
 
@@ -452,6 +494,10 @@ const Wrapper = styled.main`
             }
           }
         }
+      }
+
+      .row4 {
+        background: #f4f4f4;
       }
     }
   }
