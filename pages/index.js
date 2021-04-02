@@ -168,12 +168,56 @@ export default function Home() {
                   className="w-48 h-20 object-contain mb-4"
                   src="/assets/homepage/logo.svg"
                 />
-                <h4 className="font-medium mb-2">Your business partner solutions</h4>
-                <span className="text-sm font-extralight">
+                <h4 className="font-medium mb-2">
+                  Your business partner solutions
+                </h4>
+                <span className="text-sm font-extralight mb-6 opacity-75">
                   We make fitness fun, effective and simple. Our coaches lead
                   the fitness industry when it comes to helping people get into
                   the best shape.
                 </span>
+                <div className="flex items-center mb-2">
+                  <div className="h-10 w-10 rounded-full border-1 border-orange-300 flex items-center justify-center mr-4">
+                    <img
+                      src="/assets/homepage/address-icon.svg"
+                      className="h-4 w-4"
+                    />
+                  </div>
+                  <span className="block text-sm w-64 opacity-90">
+                    2 Alhaji Estate, Water Gate Hotel Opposite Obio Akpo LGA
+                    Council HQ Obio Akpo
+                  </span>
+                </div>
+                <div className="flex items-center">
+                  <div className="h-10 w-10 rounded-full border-1 border-orange-300 flex items-center justify-center mr-4">
+                    <img
+                      src="/assets/homepage/phone-icon.svg"
+                      className="h-4 w-4"
+                    />
+                  </div>
+                  <span className="block text-sm w-64 opacity-90">
+                    0706 833 8631
+                  </span>
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <span>Quick Links</span>
+                <nav>
+                  <ul>
+                    <li>
+                      <a>About Riilfit</a>
+                    </li>
+                    <li>
+                      <a>Contact us</a>
+                    </li>
+                    <li>
+                      <a>Privacy Policy</a>
+                    </li>
+                    <li>
+                      <a>Legal Disclaimer</a>
+                    </li>
+                  </ul>
+                </nav>
               </div>
             </div>
           </section>
