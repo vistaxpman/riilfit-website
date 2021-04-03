@@ -3,16 +3,16 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
   },
-  purge: [],  
-  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  purge: [],
+  purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   prefix: "",
   important: false,
   separator: ":",
   theme: {
     extend: {
       outline: {
-        green: '2px solid #48bb78',
-      }
+        green: "2px solid #48bb78",
+      },
     },
     screens: {
       sm: "640px",
@@ -137,6 +137,13 @@ module.exports = {
         700: "#b83280",
         800: "#97266d",
         900: "#702459",
+      },
+      custom: {
+        101: "#F77321",
+        102: "#FFBF00",
+        103: "#f4f4f4",
+        104: "#E4AD2B",
+        105: "#575757",
       },
     },
     spacing: {

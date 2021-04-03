@@ -5,6 +5,7 @@ import StarIcon from "mdi-react/StarIcon";
 import CheckIcon from "mdi-react/CheckIcon";
 import GooglePlayIcon from "mdi-react/GooglePlayIcon";
 import AppleIcon from "mdi-react/AppleIcon";
+import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 import Carousel from "./components/Carousel";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -142,87 +143,68 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="row4 px-20 py-16">
+            <section className="px-64 py-10 flex flex-col items-center">
+              <h1 className="text-4xl font-medium mb-2">
+                What Our Partners say
+              </h1>
+              <span className="w-2/5 text-center text-sm mb-6">
+                It has been a real pleasure partnering with Riilfit sports as
+                they guided us through the set up and commission of our gym
+                center.
+              </span>
+              <div className="flex justify-between">
+                <div className="flex flex-col w-2/5">
+                  <span className="text-custom-104 w-3/4 font-medium text-lg leading-5 mb-4">
+                    Finding creative digital agency company is not easy these
+                    days.
+                  </span>
+                  <span className="text-custom-105 text-sm mb-8">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam.
+                  </span>
+                  <div className="flex justify-between items-center">
+                    <div className="flex flex-col text-md text-sm">
+                      <span className="font-medium">Robert Kowalski</span>
+                      <span>Manager of skyfitnessng.com</span>
+                    </div>
+                    <div className="flex items-center">
+                      <FaLongArrowAltLeft className="mr-2 opacity-25" />
+                      <FaLongArrowAltRight className="ml-2" />
+                    </div>
+                  </div>
+                </div>
+                <div className="w-2.5/5 h-56">
+                  <img
+                    className="flex object-contain h-full w-full"
+                    src="/assets/homepage/workout.svg"
+                  />
+                </div>
+              </div>
+            </section>
+            <section className="bg-custom-103 px-20 py-16">
               <h2 className="text-2xl font-semibold mb-2">
                 Subscribe to our Newsletter
               </h2>
-              <span className="block text-sm w-2/5 font-light mb-8">
+              <span className="block text-sm w-2/5 mb-8">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                 enim ad minim veniam.
               </span>
               <div className="h-10">
                 <input
-                  className="w-1/5 border-1 border-r-0 rounded"
+                  className="w-1/5 border-1 border-r-0 border-gray-300 rounded h-10"
                   type="text"
                   placeholder="Type your email here.."
                 />
-                <button className="custom-orange h-full px-4 text-white custom-border border-1 rounded">
+                <button className="custom-orange h-10 px-4 text-white custom-border rounded-sm">
                   SUBSCRIBE
                 </button>
               </div>
-            </div>
-            <div className="bg-white flex justify-between px-20 pt-16 pb-10">
-              <div className="flex flex-col w-3/10">
-                <img
-                  className="w-48 h-20 object-contain mb-4"
-                  src="/assets/homepage/logo.svg"
-                />
-                <h4 className="font-medium mb-2">
-                  Your business partner solutions
-                </h4>
-                <span className="text-sm font-extralight mb-6 opacity-75">
-                  We make fitness fun, effective and simple. Our coaches lead
-                  the fitness industry when it comes to helping people get into
-                  the best shape.
-                </span>
-                <div className="flex items-center mb-2">
-                  <div className="h-10 w-10 rounded-full border-1 border-orange-300 flex items-center justify-center mr-4">
-                    <img
-                      src="/assets/homepage/address-icon.svg"
-                      className="h-4 w-4"
-                    />
-                  </div>
-                  <span className="block text-sm w-64 opacity-90">
-                    2 Alhaji Estate, Water Gate Hotel Opposite Obio Akpo LGA
-                    Council HQ Obio Akpo
-                  </span>
-                </div>
-                <div className="flex items-center">
-                  <div className="h-10 w-10 rounded-full border-1 border-orange-300 flex items-center justify-center mr-4">
-                    <img
-                      src="/assets/homepage/phone-icon.svg"
-                      className="h-4 w-4"
-                    />
-                  </div>
-                  <span className="block text-sm w-64 opacity-90">
-                    0706 833 8631
-                  </span>
-                </div>
-              </div>
-              <div className="flex flex-col">
-                <span>Quick Links</span>
-                <nav>
-                  <ul>
-                    <li>
-                      <a>About Riilfit</a>
-                    </li>
-                    <li>
-                      <a>Contact us</a>
-                    </li>
-                    <li>
-                      <a>Privacy Policy</a>
-                    </li>
-                    <li>
-                      <a>Legal Disclaimer</a>
-                    </li>
-                  </ul>
-                </nav>
-              </div>
-            </div>
+            </section>
+            <Footer />
           </section>
         </div>
-        {/* <Footer /> */}
       </Wrapper>
     </div>
   );
@@ -538,10 +520,6 @@ const Wrapper = styled.main`
             }
           }
         }
-      }
-
-      .row4 {
-        background: #f4f4f4;
       }
     }
   }
