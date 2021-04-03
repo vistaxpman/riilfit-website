@@ -10,16 +10,19 @@ export default function Header() {
           <a href="/">Home</a>
         </li>
         <li>
-          <a href="/dreambodi">Dreambodi</a>
+          <a href="/about-riilfit">About Rillfit</a>
         </li>
         <li>
-          <a href="/about-riilfit">About Rillfit</a>
+          <a href="/contact-us">Contact Us</a>
         </li>
         <li>
           The Gyms <ChevronDownIcon className="icon-down" />
         </li>
-        <li className="contact-us">
-          <a href="/contact-us">Contact Us</a>
+        <li>
+          <a href="/dreambodi">Dreambodi</a>
+        </li>
+        <li className="login">
+          <a href="/login">Login</a>
         </li>
       </ul>
     </Wrapper>
@@ -64,14 +67,16 @@ const Wrapper = styled.nav`
       }
     }
 
-    li.contact-us {
+    li.login {
       border: 1px solid #e4ad2b;
-      border-radius: 6px;
+      border-radius: 5px;
       color: #e4ad2b;
       padding: 7px 15px;
 
       &:hover {
-        opacity: 0.8;
+        background: #e4ad2b;
+        color: #fff;
+        border: 1px solid rgb(0, 0, 0);
       }
     }
   }
