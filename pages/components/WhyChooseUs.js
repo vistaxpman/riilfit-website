@@ -3,7 +3,7 @@ import styled from "styled-components";
 import StarIcon from "mdi-react/StarIcon";
 import CheckIcon from "mdi-react/CheckIcon";
 
-export default function OurClients() {
+export default function WhyChooseUs() {
   return (
     <Wrapper>
       <img src="/assets/homepage/row2-banner.svg" />
@@ -105,7 +105,7 @@ const Wrapper = styled.section`
         box-shadow: 0px 26px 40px rgba(0, 0, 0, 0.12);
         border-radius: 16px;
         padding: 20px;
-        height: 260px;
+        height: 280px;
 
         > div:nth-child(1) {
           background: rgba(228, 173, 43, 0.12);

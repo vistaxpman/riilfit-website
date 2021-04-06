@@ -1,22 +1,63 @@
-import React from "react";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 import ChevronDownIcon from "mdi-react/ChevronDownIcon";
 
-export default function Header() {
+export default function Header({ gyms }) {
+  const router = useRouter();
+
+  const handleClick = (route) => {
+    router.push(route);
+  };
+
+  console.log(router);
+
   return (
     <Wrapper>
       <ul>
         <li>
-          <a href="/">Home</a>
+          <a
+            href="/"
+            className={router?.pathname === "/" ? "text-custom-104" : null}
+          >
+            Home
+          </a>
         </li>
         <li>
-          <a href="/about-riilfit">About Rillfit</a>
+          <a
+            href="/about-riilfit"
+            className={
+              router?.pathname === "/about-riilfit" ? "text-custom-104" : null
+            }
+          >
+            About Rillfit
+          </a>
         </li>
         <li>
-          <a href="/contact-us">Contact Us</a>
+          <a
+            href="/contact-us"
+            className={
+              router?.pathname === "/contact-us" ? "text-custom-104" : null
+            }
+          >
+            Contact Us
+          </a>
         </li>
-        <li>
-          The Gyms <ChevronDownIcon className="icon-down" />
+        <li className="relative group">
+          <span>The Gyms</span> <ChevronDownIcon className="icon-down" />
+          <div className="invisible group-hover:visible pt-8">
+            <ul className="absolute inset-x-0 w-28 flex flex-col bg-black">
+              {gyms?.map((gym, index) => (
+                <li
+                  key={index}
+                  onClick={() => handleClick("gym")}
+                  title={gym.name}
+                  className="text-white text-sm h-8 flex items-center capitalize px-2 whitespace-nowrap overflow-ellipsis overflow-hidden text-center hover:text-white hover:bg-custom-104"
+                >
+                  {gym.name}
+                </li>
+              ))}
+            </ul>
+          </div>
         </li>
         <li>
           <a href="/dreambodi">Dreambodi</a>
@@ -44,11 +85,11 @@ const Wrapper = styled.nav`
   z-index: 10;
   height: 80px;
 
-  ul {
+  > ul {
     display: flex;
     align-items: center;
 
-    li {
+    > li {
       margin-left: 40px;
       display: flex;
       align-items: center;
@@ -67,7 +108,7 @@ const Wrapper = styled.nav`
       }
     }
 
-    li.login {
+    > li.login {
       border: 1px solid #e4ad2b;
       border-radius: 5px;
       color: #e4ad2b;

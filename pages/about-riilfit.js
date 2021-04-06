@@ -1,4 +1,5 @@
 import Head from "next/head";
+import getConfig from "next/config";
 import styled from "styled-components";
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 import Carousel from "./components/Carousel";
@@ -8,15 +9,17 @@ import HowWeBuild from "./components/HowWeBuild";
 import WhyChooseUs from "./components/WhyChooseUs";
 import OurClients from "./components/OurClients";
 
-export default function AboutRillfit() {
+const { publicRuntimeConfig } = getConfig();
+
+export default function AboutRillfit({ gyms }) {
   return (
     <div>
       <Head>
-        <title>Rillfit - AboutRillfit</title>
+        <title>Rillfit - About Rillfit</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Wrapper className="sleek-scrollbar">
-        <Header />
+        <Header gyms={gyms} />
         <div className="home-wrapper">
           <Carousel />
           <OurClients />
@@ -83,6 +86,30 @@ export default function AboutRillfit() {
       </Wrapper>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  let page_number = 0;
+  let limit = 10;
+  const API_URL = publicRuntimeConfig.API_URL;
+
+  let res = await fetch(
+    `${API_URL}/gyms?page_number=${page_number}&limit=${limit}`
+  );
+
+  res = await res.json();
+  const gyms = res?.payload;
+  page_number = gyms?.length ? page_number + 1 : page_number;
+
+  return {
+    props: {
+      gyms,
+      isFetching: false,
+      API_URL,
+      page_number,
+      limit,
+    },
+  };
 }
 
 const Wrapper = styled.main`
