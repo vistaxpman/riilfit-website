@@ -82,7 +82,7 @@ export default function Gym({ gyms }) {
                   className={`w-48 py-3 rounded-md bg-custom-104 text-black ${
                     data?.selectedPlan
                       ? "text-white cursor-pointer"
-                      : "opacity-50 cursor-not-allowed"
+                      : "opacity-50 bg-opacity-50 cursor-not-allowed"
                   }`}
                 >
                   Continue

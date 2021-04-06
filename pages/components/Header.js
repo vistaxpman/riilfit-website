@@ -1,15 +1,21 @@
+import { useState } from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import ChevronDownIcon from "mdi-react/ChevronDownIcon";
+import { Auth } from "../components/Auth";
+import { combineData } from "../../utils";
 
 export default function Header({ gyms }) {
   const router = useRouter();
+  const [data, setData] = useState({ isAuthVisible: false });
 
   const handleClick = (route) => {
     router.push(route);
   };
 
-  console.log(router);
+  const handleAuthModalVisibility = (isAuthVisible) => {
+    setData(combineData(data, { isAuthVisible }));
+  };
 
   return (
     <Wrapper>
@@ -43,7 +49,12 @@ export default function Header({ gyms }) {
           </a>
         </li>
         <li className="relative group">
-          <span>The Gyms</span> <ChevronDownIcon className="icon-down" />
+          <span
+            className={router?.pathname === "/gym" ? "text-custom-104" : null}
+          >
+            The Gyms
+          </span>{" "}
+          <ChevronDownIcon className="icon-down" />
           <div className="invisible group-hover:visible pt-8">
             <ul className="absolute inset-x-0 w-28 flex flex-col bg-black">
               {gyms?.map((gym, index) => (
@@ -63,9 +74,12 @@ export default function Header({ gyms }) {
           <a href="/dreambodi">Dreambodi</a>
         </li>
         <li className="login">
-          <a href="/login">Login</a>
+          <span onClick={() => handleAuthModalVisibility(true)}>Login</span>
         </li>
       </ul>
+      {data?.isAuthVisible ? (
+        <Auth onCloseAuthModal={() => handleAuthModalVisibility(false)} />
+      ) : null}
     </Wrapper>
   );
 }
