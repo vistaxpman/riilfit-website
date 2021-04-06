@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import ChevronDownIcon from "mdi-react/ChevronDownIcon";
-import { Auth } from "../components/Auth";
+import Auth from "../components/Auth";
 import { combineData } from "../../utils";
 
 export default function Header({ gyms }) {

@@ -3,7 +3,7 @@ import Login from "./Login";
 import SignUp from "./SignUp";
 import { combineData } from "../../../utils";
 
-export function Auth({ onCloseAuthModal }) {
+export default function Auth({ onCloseAuthModal }) {
   const [data, setData] = useState({
     activeComponent: "Login",
   });
