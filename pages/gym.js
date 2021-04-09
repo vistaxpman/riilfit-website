@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Head from "next/head";
 import getConfig from "next/config";
 import styled from "styled-components";
@@ -8,7 +8,7 @@ import { combineData } from "../utils";
 
 const { publicRuntimeConfig } = getConfig();
 
-export default function Gym({ gyms }) {
+export default function Gym() {
   const [data, setData] = useState({
     selectedPlan: null,
     plans: [
@@ -17,10 +17,31 @@ export default function Gym({ gyms }) {
       { id: "3456", duration: "Every 3 months", price: "20000" },
       { id: "4567", duration: "Yearly", price: "250000" },
     ],
+    gyms: [],
   });
 
   const handleSelectPlan = (selectedPlan) => {
     setData(combineData(data, { selectedPlan }));
+  };
+
+  useEffect(() => {
+    handleFetchGyms();
+  }, []);
+
+  const handleFetchGyms = async () => {
+    let page_number = 0;
+    let limit = 10;
+    const API_URL = publicRuntimeConfig.API_URL;
+
+    let res = await fetch(
+      `${API_URL}/gyms?page_number=${page_number}&limit=${limit}`
+    );
+
+    res = await res.json();
+    const gyms = res?.payload || [];
+    page_number = gyms?.length ? page_number + 1 : page_number;
+
+    setData(combineData(data, { gyms }));
   };
 
   return (
@@ -30,7 +51,7 @@ export default function Gym({ gyms }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Wrapper className="sleek-scrollbar">
-        <Header gyms={gyms} />
+        <Header gyms={data?.gyms} />
         <div className="home-wrapper">
           <section className="flex justify-between px-16 py-20">
             <div className="w-1/3.5 flex flex-col">
@@ -95,30 +116,6 @@ export default function Gym({ gyms }) {
       </Wrapper>
     </div>
   );
-}
-
-export async function getServerSideProps() {
-  let page_number = 0;
-  let limit = 10;
-  const API_URL = publicRuntimeConfig.API_URL;
-
-  let res = await fetch(
-    `${API_URL}/gyms?page_number=${page_number}&limit=${limit}`
-  );
-
-  res = await res.json();
-  const gyms = res?.payload;
-  page_number = gyms?.length ? page_number + 1 : page_number;
-
-  return {
-    props: {
-      gyms,
-      isFetching: false,
-      API_URL,
-      page_number,
-      limit,
-    },
-  };
 }
 
 const Wrapper = styled.main`

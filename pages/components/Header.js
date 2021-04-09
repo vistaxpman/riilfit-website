@@ -56,15 +56,15 @@ export default function Header({ gyms }) {
           </span>{" "}
           <ChevronDownIcon className="icon-down" />
           <div className="invisible group-hover:visible pt-8">
-            <ul className="absolute inset-x-0 w-28 flex flex-col bg-black">
+            <ul className="absolute inset-x-0 w-28 flex flex-col bg-custom-104">
               {gyms?.map((gym, index) => (
                 <li
                   key={index}
                   onClick={() => handleClick("gym")}
-                  title={gym.name}
-                  className="text-white text-sm h-8 flex items-center capitalize px-2 whitespace-nowrap overflow-ellipsis overflow-hidden text-center hover:text-white hover:bg-custom-104"
+                  title={gym?.tag}
+                  className="text-white text-sm h-8 flex items-center capitalize px-2 whitespace-nowrap overflow-ellipsis overflow-hidden text-center text-white hover:bg-opacity-80"
                 >
-                  {gym.name}
+                  {gym?.tag}
                 </li>
               ))}
             </ul>
