@@ -9,8 +9,11 @@ import { combineData } from "../../utils";
 
 export default function Header({ gyms }) {
   const router = useRouter();
-  const [data, setData] = useState({ isAuthVisible: false });
-  const [cookies, setCookie] = useCookies(["token"]);
+  const [data, setData] = useState({
+    isAuthVisible: false,
+    isRequesting: false,
+  });
+  const [cookies, setCookie] = useCookies() || {};
 
   const handleClick = (route) => {
     router.push(route);
@@ -76,7 +79,7 @@ export default function Header({ gyms }) {
         <li className="hover:text-custom-102">
           <a href="/dreambodi">Dreambodi</a>
         </li>
-        {cookies?.token ? (
+        {cookies && cookies?.user ? (
           <li className="login">
             <a href="/profile">
               <AccountCircleIcon />

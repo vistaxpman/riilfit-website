@@ -42,13 +42,19 @@ export default function Auth({ onCloseAuthModal }) {
           <span
             onClick={() => handleActiveComponent("SignUp")}
             className={`w-2/4 h-full flex items-center justify-center rounded-tr-md ${
-              data?.activeComponent === "SignUp" ? "bg-custom-104 text-white" : null
+              data?.activeComponent === "SignUp"
+                ? "bg-custom-104 text-white"
+                : null
             }`}
           >
             Sign Up
           </span>
         </div>
-        {data?.activeComponent === "Login" ? <Login /> : <SignUp />}
+        {data?.activeComponent === "Login" ? (
+          <Login closeAuthModal={() => onCloseAuthModal()} />
+        ) : (
+          <SignUp />
+        )}
       </div>
     </div>
   );
