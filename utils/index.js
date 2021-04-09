@@ -10,10 +10,12 @@ export const combineData = (data, params) => {
 };
 
 export const serverPath = (staticFilePath) => {
-  console.log('staticFilePath')
-  console.log(staticFilePath)
   return path.join(
     getConfig().publicRuntimeConfig.STATIC_FOLDER,
     staticFilePath
   );
 };
+
+export const getImage = (imagePath) => {
+  return `${getConfig().publicRuntimeConfig.ASSETS_URL}/${imagePath}`
+}

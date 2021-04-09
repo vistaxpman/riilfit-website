@@ -2,12 +2,15 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import ChevronDownIcon from "mdi-react/ChevronDownIcon";
+import AccountCircleIcon from "mdi-react/AccountCircleIcon";
+import { useCookies } from "react-cookie";
 import Auth from "../components/Auth";
 import { combineData } from "../../utils";
 
 export default function Header({ gyms }) {
   const router = useRouter();
   const [data, setData] = useState({ isAuthVisible: false });
+  const [cookies, setCookie] = useCookies(["token"]);
 
   const handleClick = (route) => {
     router.push(route);
@@ -20,7 +23,7 @@ export default function Header({ gyms }) {
   return (
     <Wrapper>
       <ul>
-        <li>
+        <li className="hover:text-custom-102">
           <a
             href="/"
             className={router?.pathname === "/" ? "text-custom-104" : null}
@@ -28,7 +31,7 @@ export default function Header({ gyms }) {
             Home
           </a>
         </li>
-        <li>
+        <li className="hover:text-custom-102">
           <a
             href="/about-riilfit"
             className={
@@ -38,7 +41,7 @@ export default function Header({ gyms }) {
             About Rillfit
           </a>
         </li>
-        <li>
+        <li className="hover:text-custom-102">
           <a
             href="/contact-us"
             className={
@@ -60,7 +63,7 @@ export default function Header({ gyms }) {
               {gyms?.map((gym, index) => (
                 <li
                   key={index}
-                  onClick={() => handleClick("gym")}
+                  onClick={() => handleClick(`gym/${gym?.tag}`)}
                   title={gym?.tag}
                   className="text-white text-sm h-8 flex items-center capitalize px-2 whitespace-nowrap overflow-ellipsis overflow-hidden text-center text-white hover:bg-opacity-80"
                 >
@@ -70,12 +73,20 @@ export default function Header({ gyms }) {
             </ul>
           </div>
         </li>
-        <li>
+        <li className="hover:text-custom-102">
           <a href="/dreambodi">Dreambodi</a>
         </li>
-        <li className="login">
-          <span onClick={() => handleAuthModalVisibility(true)}>Login</span>
-        </li>
+        {cookies?.token ? (
+          <li className="login">
+            <a href="/profile">
+              <AccountCircleIcon />
+            </a>
+          </li>
+        ) : (
+          <li className="login">
+            <span onClick={() => handleAuthModalVisibility(true)}>Login</span>
+          </li>
+        )}
       </ul>
       {data?.isAuthVisible ? (
         <Auth onCloseAuthModal={() => handleAuthModalVisibility(false)} />
@@ -104,7 +115,7 @@ const Wrapper = styled.nav`
     align-items: center;
 
     > li {
-      margin-left: 40px;
+      margin-right: 40px;
       display: flex;
       align-items: center;
       cursor: pointer;
