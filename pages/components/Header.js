@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import ChevronDownIcon from "mdi-react/ChevronDownIcon";
@@ -7,13 +7,17 @@ import { useCookies } from "react-cookie";
 import Auth from "../components/Auth";
 import { combineData } from "../../utils";
 
-export default function Header({ gyms }) {
+export default function Header({ gyms, isAuthVisible }) {
   const router = useRouter();
   const [data, setData] = useState({
-    isAuthVisible: false,
+    isAuthVisible,
     isRequesting: false,
   });
   const [cookies, setCookie, removeCookie] = useCookies() || {};
+
+  useEffect(() => {
+    setData(combineData(data, { isAuthVisible }));
+  }, [isAuthVisible]);
 
   const handleClick = (route) => {
     router.push(route);
@@ -24,7 +28,10 @@ export default function Header({ gyms }) {
   };
 
   const handleLogout = () => {
-    removeCookie("user");
+    removeCookie("user", {
+      path: "/",
+      sameSite: true,
+    });
     router.replace("/");
   };
 
