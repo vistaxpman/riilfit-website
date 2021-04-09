@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useCookies } from "react-cookie";
 import { login } from "../../../services/AuthServices";
 import { combineData } from "../../../utils";
 
 export default function Login({ closeAuthModal }) {
-  const [cookie, setCookie] = useCookies(["user"]);
   const [data, setData] = useState({
     errorMessage: "",
     isRequesting: false,
@@ -12,8 +11,10 @@ export default function Login({ closeAuthModal }) {
     password: "",
   });
 
+  const [cookies, setCookie] = useCookies();
+
   const handleSetField = (field, value) => {
-    const obj = {};
+    const obj = { errorMessage: "" };
     obj[field] = value;
     setData(combineData(data, { ...obj }));
   };
@@ -78,9 +79,11 @@ export default function Login({ closeAuthModal }) {
 
   return (
     <form className="flex flex-col px-32 pt-12">
-      <span className="text-red-500 text-center h-3 mb-6">
-        {data?.errorMessage}
-      </span>
+      {data?.errorMessage ? (
+        <span className="text-red-500 text-center h-3 mb-6">
+          {data?.errorMessage}
+        </span>
+      ) : null}
       <input
         placeholder="Email"
         type="text"
@@ -103,7 +106,7 @@ export default function Login({ closeAuthModal }) {
         }`}
         onClick={(e) => handleLogin(e)}
       >
-        Login
+        {data?.isRequesting ? "Please wait..." : "Login"}
       </button>
     </form>
   );

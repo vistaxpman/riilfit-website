@@ -15,6 +15,7 @@ export default function Profile() {
   });
   const [cookies, setCookie] = useCookies() || {};
 
+  console.log(cookies?.user);
 
   useEffect(() => {
     handleFetchGyms();

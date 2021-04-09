@@ -13,7 +13,7 @@ export default function Header({ gyms }) {
     isAuthVisible: false,
     isRequesting: false,
   });
-  const [cookies, setCookie] = useCookies() || {};
+  const [cookies, setCookie, removeCookie] = useCookies() || {};
 
   const handleClick = (route) => {
     router.push(route);
@@ -23,8 +23,17 @@ export default function Header({ gyms }) {
     setData(combineData(data, { isAuthVisible }));
   };
 
+  const handleLogout = () => {
+    removeCookie("user");
+    router.replace("/");
+  };
+
   return (
     <Wrapper>
+      <img
+        className="w-48 h-20 object-contain mb-4 ml-10"
+        src="/assets/homepage/logo.svg"
+      />
       <ul>
         <li className="hover:text-custom-102">
           <a
@@ -80,16 +89,24 @@ export default function Header({ gyms }) {
           <a href="/dreambodi">Dreambodi</a>
         </li>
         {cookies && cookies?.user ? (
-          <li className="login">
+          <li className="login ml-24">
             <a href="/profile">
               <AccountCircleIcon />
             </a>
           </li>
         ) : (
-          <li className="login">
+          <li className="login ml-24">
             <span onClick={() => handleAuthModalVisibility(true)}>Login</span>
           </li>
         )}
+        {cookies && cookies?.user ? (
+          <li
+            className="hover:bg-opacity-80 bg-red-600 px-2 py-1 rounded-sm"
+            onClick={() => handleLogout()}
+          >
+            Logout
+          </li>
+        ) : null}
       </ul>
       {data?.isAuthVisible ? (
         <Auth onCloseAuthModal={() => handleAuthModalVisibility(false)} />
@@ -101,9 +118,8 @@ export default function Header({ gyms }) {
 const Wrapper = styled.nav`
   display: flex;
   background: rgb(0, 0, 0);
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  padding-right: 153px;
   color: #fff;
   font-size: 14px;
   position: fixed;
@@ -116,6 +132,7 @@ const Wrapper = styled.nav`
   > ul {
     display: flex;
     align-items: center;
+    margin-right: 40px;
 
     > li {
       margin-right: 40px;
@@ -140,7 +157,7 @@ const Wrapper = styled.nav`
       border: 1px solid #e4ad2b;
       border-radius: 5px;
       color: #e4ad2b;
-      padding: 7px 15px;
+      padding: 5px 15px;
 
       &:hover {
         background: #e4ad2b;
