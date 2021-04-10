@@ -19,7 +19,7 @@ export default function Header({ gyms, isAuthVisible }) {
     setData(combineData(data, { isAuthVisible }));
   }, [isAuthVisible]);
 
-  const handleClick = (route) => {
+  const handleNavigateToRoute = (route) => {
     router.push(route);
   };
 
@@ -82,7 +82,7 @@ export default function Header({ gyms, isAuthVisible }) {
               {gyms?.map((gym, index) => (
                 <li
                   key={index}
-                  onClick={() => handleClick(`gym/${gym?.tag}`)}
+                  onClick={() => handleNavigateToRoute(`gym/${gym?.tag}`)}
                   title={gym?.tag}
                   className="text-white text-sm h-8 flex items-center capitalize px-2 whitespace-nowrap overflow-ellipsis overflow-hidden text-center text-white hover:bg-opacity-80"
                 >
@@ -96,14 +96,18 @@ export default function Header({ gyms, isAuthVisible }) {
           <a href="/dreambodi">Dreambodi</a>
         </li>
         {cookies && cookies?.user ? (
-          <li className="login ml-24">
-            <a href="/profile">
-              <AccountCircleIcon />
-            </a>
+          <li
+            className="login ml-24"
+            onClick={() => handleNavigateToRoute("/profile")}
+          >
+            <AccountCircleIcon />
           </li>
         ) : (
-          <li className="login ml-24">
-            <span onClick={() => handleAuthModalVisibility(true)}>Login</span>
+          <li
+            className="login ml-24"
+            onClick={() => handleAuthModalVisibility(true)}
+          >
+            <span>Login</span>
           </li>
         )}
         {cookies && cookies?.user ? (

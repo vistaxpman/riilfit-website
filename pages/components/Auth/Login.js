@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useCookies } from "react-cookie";
+import { useRouter } from "next/router";
 import { login } from "../../../services/AuthServices";
 import { combineData } from "../../../utils";
 
 export default function Login({ closeAuthModal }) {
+  const router = useRouter();
   const [data, setData] = useState({
     errorMessage: "",
     isRequesting: false,
@@ -12,6 +14,10 @@ export default function Login({ closeAuthModal }) {
   });
 
   const [cookies, setCookie] = useCookies();
+
+  const handleNavigateToRoute = (route) => {
+    router.push(route);
+  };
 
   const handleSetField = (field, value) => {
     const obj = { errorMessage: "" };
@@ -48,7 +54,16 @@ export default function Login({ closeAuthModal }) {
                 sameSite: true,
               }
             );
-            closeAuthModal();
+
+            //If user is in gym page or profile, closeAuthModal
+            if (
+              router?.pathname?.includes("/gym") ||
+              router?.pathname === "/profile"
+            ) {
+              closeAuthModal();
+            } else {
+              handleNavigateToRoute("/profile");
+            }
           } else {
             setData(
               combineData(data, {
