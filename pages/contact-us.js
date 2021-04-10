@@ -42,8 +42,8 @@ export default function ContactUs() {
       <Wrapper className="sleek-scrollbar">
         <Header gyms={data?.gyms} />
         <div className="home-wrapper">
-          <section>
-            <span>Contact Us</span>
+          <section className="flex justify-between px-16 py-40 flex flex-col items-center justify-center">
+            <h2 className="text-3xl font-bold">Contact Us here</h2>
           </section>
           <Footer />
         </div>

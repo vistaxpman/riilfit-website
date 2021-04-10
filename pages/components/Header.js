@@ -50,9 +50,11 @@ export default function Header({ gyms, isAuthVisible }) {
             Home
           </a>
         </li>
-        <li className="hover:text-custom-102">
+        <li
+          className="hover:text-custom-102"
+          onClick={() => handleNavigateToRoute("/about-riilfit")}
+        >
           <a
-            href="/about-riilfit"
             className={
               router?.pathname === "/about-riilfit" ? "text-custom-104" : null
             }
@@ -60,9 +62,11 @@ export default function Header({ gyms, isAuthVisible }) {
             About Rillfit
           </a>
         </li>
-        <li className="hover:text-custom-102">
+        <li
+          className="hover:text-custom-102"
+          onClick={() => handleNavigateToRoute("/contact-us")}
+        >
           <a
-            href="/contact-us"
             className={
               router?.pathname === "/contact-us" ? "text-custom-104" : null
             }
@@ -92,8 +96,11 @@ export default function Header({ gyms, isAuthVisible }) {
             </ul>
           </div>
         </li>
-        <li className="hover:text-custom-102">
-          <a href="/dreambodi">Dreambodi</a>
+        <li
+          className="hover:text-custom-102"
+          onClick={() => handleNavigateToRoute("/dreambodi")}
+        >
+          <a>Dreambodi</a>
         </li>
         {cookies && cookies?.user ? (
           <li
