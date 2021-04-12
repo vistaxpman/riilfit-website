@@ -46,7 +46,7 @@ export default function Home() {
       </Head>
       <Wrapper className="sleek-scrollbar">
         <Header gyms={data?.gyms} />
-        <div className="home-wrapper">
+        <div className="home-wrapper flex flex-col">
           <Carousel />
           <OurClients />
           <WhyChooseUs />

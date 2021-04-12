@@ -19,9 +19,9 @@ export default function OurClients() {
           backgroundImage: `url(${publicRuntimeConfig.ASSETS_FOLDER}/homepage/wave-right.png)`,
         }}
       ></div>
-      <div className="row1-wrapper">
-        <div className="row1-content">
-          <div>
+      <div className="row1-wrapper py-20 px-20">
+        <div className="row1-content flex justify-between items-center h-full smdownwards:flex-col">
+          <div className="flex flex-col w-3/10 smdownwards:w-full smdownwards:mb-20">
             <div>
               <span></span>
               <span>Our Clients</span>
@@ -34,20 +34,60 @@ export default function OurClients() {
               possible rig equipment to your specifications.
             </span>
           </div>
-          <div>
+          <div className="flex flex-col w-3/5 h-full justify-center smdownwards:w-full">
             <div>
-              <div></div>
-              <div></div>
-              <div></div>
+              <div>
+                <img
+                  src="/assets/clients/skyfit-logo.svg"
+                  className="w-4/5 h-3/5 object-contain"
+                />
+              </div>
+              <div>
+                <img
+                  src="/assets/clients/ifit-logo.svg"
+                  className="w-4/5 h-3/5 object-contain"
+                />
+              </div>
+              <div>
+                <img
+                  src="/assets/clients/anvil-logo.svg"
+                  className="w-4/5 h-3/5 object-contain"
+                />
+              </div>
             </div>
             <div>
-              <div></div>
-              <div></div>
+              <div>
+                <img
+                  src="/assets/clients/24fitness-logo.svg"
+                  className="w-4/5 h-3/5 object-contain"
+                />
+              </div>
+              <div>
+                <img
+                  src="/assets/clients/dreambodi-logo.svg"
+                  className="w-4/5 h-3/5 object-contain"
+                />
+              </div>
             </div>
             <div>
-              <div></div>
-              <div></div>
-              <div></div>
+              <div>
+                <img
+                  src="/assets/clients/ifit-logo.svg"
+                  className="w-4/5 h-3/5 object-contain"
+                />
+              </div>
+              <div>
+                <img
+                  src="/assets/clients/ifitness-logo.svg"
+                  className="w-4/5 h-3/5 object-contain"
+                />
+              </div>
+              <div>
+                <img
+                  src="/assets/clients/120+Gyms-logo.svg"
+                  className="w-16 h-10 object-contain"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -57,7 +97,6 @@ export default function OurClients() {
 }
 
 const Wrapper = styled.section`
-  height: 350px;
   position: relative;
   display: flex;
 
@@ -84,20 +123,10 @@ const Wrapper = styled.section`
   .row1-wrapper {
     height: 100%;
     width: 100%;
-    padding: 7% 10%;
   }
 
   .row1-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-
     > div:nth-child(1) {
-      display: flex;
-      flex-direction: column;
-      width: 30%;
-
       > div:nth-child(1) {
         display: flex;
         align-items: center;
@@ -132,12 +161,6 @@ const Wrapper = styled.section`
     }
 
     > div:nth-child(2) {
-      display: flex;
-      flex-direction: column;
-      width: 60%;
-      height: 100%;
-      justify-content: center;
-
       > div {
         display: flex;
         column-gap: 10%;
@@ -151,6 +174,9 @@ const Wrapper = styled.section`
           border-radius: 6px;
           border: 1px solid #fff;
           height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
       }
     }
