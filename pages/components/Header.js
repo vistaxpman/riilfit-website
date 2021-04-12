@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import ChevronDownIcon from "mdi-react/ChevronDownIcon";
 import AccountCircleIcon from "mdi-react/AccountCircleIcon";
+import MenuIcon from "mdi-react/MenuIcon";
+import CloseIcon from "mdi-react/CloseIcon";
 import { useCookies } from "react-cookie";
 import Auth from "../components/Auth";
 import { combineData } from "../../utils";
@@ -12,6 +14,8 @@ export default function Header({ gyms, isAuthVisible }) {
   const [data, setData] = useState({
     isAuthVisible,
     isRequesting: false,
+    isMobileMenuVisible: false,
+    isShowingGyms: false,
   });
   const [cookies, setCookie, removeCookie] = useCookies() || {};
 
@@ -35,107 +39,203 @@ export default function Header({ gyms, isAuthVisible }) {
     router.replace("/");
   };
 
+  const toggleMobileMenuVisibility = () => {
+    let { isMobileMenuVisible } = data;
+    isMobileMenuVisible = !isMobileMenuVisible;
+    setData((data) =>
+      combineData(data, { isMobileMenuVisible, isShowingGyms: false })
+    );
+  };
+
+  const toggleShowingGymsVisibility = () => {
+    let { isShowingGyms } = data;
+    isShowingGyms = !isShowingGyms;
+    setData((data) => combineData(data, { isShowingGyms }));
+  };
+
   return (
-    <Wrapper>
-      <img
-        className="w-48 h-20 object-contain mb-4 ml-10"
-        src="/assets/homepage/logo.svg"
-      />
-      <ul>
-        <li className="hover:text-custom-102">
-          <a
-            href="/"
-            className={router?.pathname === "/" ? "text-custom-104" : null}
-          >
-            Home
-          </a>
-        </li>
-        <li
-          className="hover:text-custom-102"
-          onClick={() => handleNavigateToRoute("/about-riilfit")}
-        >
-          <a
-            className={
-              router?.pathname === "/about-riilfit" ? "text-custom-104" : null
-            }
-          >
-            About Rillfit
-          </a>
-        </li>
-        <li
-          className="hover:text-custom-102"
-          onClick={() => handleNavigateToRoute("/contact-us")}
-        >
-          <a
-            className={
-              router?.pathname === "/contact-us" ? "text-custom-104" : null
-            }
-          >
-            Contact Us
-          </a>
-        </li>
-        <li className="relative group">
-          <span
-            className={router?.pathname === "/gym" ? "text-custom-104" : null}
-          >
-            The Gyms
-          </span>{" "}
-          <ChevronDownIcon className="icon-down" />
-          <div className="invisible group-hover:visible pt-8">
-            <ul className="absolute inset-x-0 w-28 flex flex-col bg-custom-104">
-              {gyms?.map((gym, index) => (
-                <li
-                  key={index}
-                  onClick={() => handleNavigateToRoute(`gym/${gym?.tag}`)}
-                  title={gym?.tag}
-                  className="text-white text-sm h-8 flex items-center capitalize px-2 whitespace-nowrap overflow-ellipsis overflow-hidden text-center text-white hover:bg-opacity-80"
-                >
-                  {gym?.tag}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </li>
-        <li
-          className="hover:text-custom-102"
-          onClick={() => handleNavigateToRoute("/dreambodi")}
-        >
-          <a>Dreambodi</a>
-        </li>
-        {cookies && cookies?.user ? (
-          <li
-            className="login ml-24"
-            onClick={() => handleNavigateToRoute("/profile")}
-          >
-            <AccountCircleIcon />
+    <>
+      <Wrapper>
+        <img
+          className="my-auto w-48 md:w-40 h-20 object-contain mb-4 ml-10 md:ml-2 smdownwards:ml-0"
+          src="/assets/homepage/logo.svg"
+        />
+        <ul className="flex items-center mr-10  md:mr-2 smdownwards:hidden">
+          <li className="hover:text-custom-102 mr-10 md:mr-6 cursor-pointer flex items-center">
+            <a
+              href="/"
+              className={router?.pathname === "/" ? "text-custom-104" : null}
+            >
+              Home
+            </a>
           </li>
-        ) : (
           <li
-            className="login ml-24"
-            onClick={() => handleAuthModalVisibility(true)}
+            className="hover:text-custom-102 mr-10 md:mr-6 cursor-pointer flex items-center"
+            onClick={() => handleNavigateToRoute("/about-riilfit")}
           >
-            <span>Login</span>
+            <a
+              className={
+                router?.pathname === "/about-riilfit" ? "text-custom-104" : null
+              }
+            >
+              About Rillfit
+            </a>
           </li>
-        )}
-        {cookies && cookies?.user ? (
           <li
-            className="hover:bg-opacity-80 bg-red-600 px-2 py-1 rounded-sm"
-            onClick={() => handleLogout()}
+            className="hover:text-custom-102 mr-10 md:mr-6 cursor-pointer flex items-center"
+            onClick={() => handleNavigateToRoute("/contact-us")}
           >
-            Logout
+            <a
+              className={
+                router?.pathname === "/contact-us" ? "text-custom-104" : null
+              }
+            >
+              Contact Us
+            </a>
           </li>
+          <li className="relative group mr-10 md:mr-6 cursor-pointer flex items-center">
+            <span
+              className={router?.pathname === "/gym" ? "text-custom-104" : null}
+            >
+              The Gyms
+            </span>{" "}
+            <ChevronDownIcon className="icon-down" />
+            <div className="invisible group-hover:visible pt-8">
+              <ul className="absolute inset-x-0 w-28 flex flex-col bg-custom-104">
+                {gyms?.map((gym, index) => (
+                  <li
+                    key={index}
+                    onClick={() => handleNavigateToRoute(`gym/${gym?.tag}`)}
+                    title={gym?.tag}
+                    className="text-white text-sm h-8 flex items-center capitalize px-2 whitespace-nowrap overflow-ellipsis overflow-hidden text-center text-white hover:bg-opacity-80"
+                  >
+                    {gym?.tag}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </li>
+          <li
+            className="hover:text-custom-102 mr-10 md:mr-6 cursor-pointer flex items-center"
+            onClick={() => handleNavigateToRoute("/dreambodi")}
+          >
+            <a>Dreambodi</a>
+          </li>
+          {cookies && cookies?.user ? (
+            <li
+              className="login ml-24 md:ml-2"
+              onClick={() => handleNavigateToRoute("/profile")}
+            >
+              <AccountCircleIcon />
+            </li>
+          ) : (
+            <li
+              className="login ml-24 md:ml-2"
+              onClick={() => handleAuthModalVisibility(true)}
+            >
+              <span>Login</span>
+            </li>
+          )}
+          {cookies && cookies?.user ? (
+            <li
+              className="hover:bg-opacity-80 bg-red-600 px-2 py-1 rounded-sm ml-4"
+              onClick={() => handleLogout()}
+            >
+              Logout
+            </li>
+          ) : null}
+        </ul>
+
+        <MenuIcon
+          className="text-white mr-4 hidden smdownwards:block"
+          onClick={() => toggleMobileMenuVisibility()}
+        />
+
+        {data?.isAuthVisible ? (
+          <Auth onCloseAuthModal={() => handleAuthModalVisibility(false)} />
         ) : null}
-      </ul>
-      {data?.isAuthVisible ? (
-        <Auth onCloseAuthModal={() => handleAuthModalVisibility(false)} />
+      </Wrapper>
+
+      {data?.isMobileMenuVisible ? (
+        <div className="mr-4 fixed z-20 top-0 left-0 w-screen h-screen bg-gray-200 flex flex-col px-4 py-4">
+          <CloseIcon
+            className="ml-auto mb-4"
+            onClick={() => toggleMobileMenuVisibility()}
+          />
+          <ul>
+            <li className="mb-2">
+              <a
+                href="/"
+                className={router?.pathname === "/" ? "text-custom-104" : null}
+              >
+                Home
+              </a>
+            </li>
+            <li
+              className="mb-2"
+              onClick={() => handleNavigateToRoute("/about-riilfit")}
+            >
+              <a
+                className={
+                  router?.pathname === "/about-riilfit"
+                    ? "text-custom-104"
+                    : null
+                }
+              >
+                About Rillfit
+              </a>
+            </li>
+            <li
+              className="mb-2"
+              onClick={() => handleNavigateToRoute("/contact-us")}
+            >
+              <a
+                className={
+                  router?.pathname === "/contact-us" ? "text-custom-104" : null
+                }
+              >
+                Contact Us
+              </a>
+            </li>
+            <li className="flex flex-col mb-2">
+              <div
+                className="flex mb-1"
+                onClick={() => toggleShowingGymsVisibility()}
+              >
+                <span
+                  className={
+                    router?.pathname === "/gym" ? "text-custom-104" : null
+                  }
+                >
+                  The Gyms
+                </span>{" "}
+                <ChevronDownIcon className="icon-down" />
+              </div>
+              {data?.isShowingGyms ? (
+                <ul className="w-28 flex flex-col bg-custom-104">
+                  {gyms?.map((gym, index) => (
+                    <li
+                      key={index}
+                      onClick={() => handleNavigateToRoute(`gym/${gym?.tag}`)}
+                      title={gym?.tag}
+                      className="text-white text-sm h-8 flex items-center capitalize px-2 whitespace-nowrap overflow-ellipsis overflow-hidden text-center text-white hover:bg-opacity-80"
+                    >
+                      {gym?.tag}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </li>
+          </ul>
+        </div>
       ) : null}
-    </Wrapper>
+    </>
   );
 }
 
 const Wrapper = styled.nav`
   display: flex;
-  background: rgb(0, 0, 0);
+  background: #000;
   justify-content: space-between;
   align-items: center;
   color: #fff;
@@ -148,16 +248,7 @@ const Wrapper = styled.nav`
   height: 80px;
 
   > ul {
-    display: flex;
-    align-items: center;
-    margin-right: 40px;
-
     > li {
-      margin-right: 40px;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-
       a:hover {
         opacity: 0.8;
       }

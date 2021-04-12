@@ -14,11 +14,19 @@ module.exports = {
         green: "2px solid #48bb78",
       },
     },
+    // screens: {
+    //   sm: "640px",
+    //   md: "768px",
+    //   lg: "1024px",
+    //   xl: "1280px",
+    // },
     screens: {
-      sm: "640px",
-      md: "768px",
-      lg: "1024px",
-      xl: "1280px",
+      sm: { min: "640px", max: "767px" },
+      smdownwards: { min: "1px", max: "767px" },
+      md: { min: "768px", max: "1023px" },
+      lg: { min: "1024px", max: "1279px" },
+      xl: { min: "1280px", max: "1535px" },
+      "2xl": { min: "1536px" },
     },
     colors: {
       transparent: "transparent",

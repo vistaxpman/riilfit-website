@@ -41,7 +41,7 @@ export default function Carousel() {
       >
         <div className="each-slide">
           <div style={{ backgroundImage: `url(${data?.slideImages[0]})` }}>
-            <span>Interactive. Personal. Traning</span>
+            <span>Interactive. Personal. Training</span>
           </div>
         </div>
         <div className="each-slide">
