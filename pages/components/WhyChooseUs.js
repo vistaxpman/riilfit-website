@@ -5,8 +5,8 @@ import CheckIcon from "mdi-react/CheckIcon";
 
 export default function WhyChooseUs() {
   return (
-    <Wrapper>
-      <img src="/assets/homepage/row2-banner.svg" />
+    <Wrapper className="py-16 px-20">
+      <img src="/assets/homepage/row2-banner.svg" className="lg:invisible"/>
       <div>
         <div>
           <span></span>
@@ -51,7 +51,6 @@ const Wrapper = styled.section`
   border-top-right-radius: 80px;
   display: flex;
   justify-content: center;
-  padding: 3% 7%;
 
   > img:nth-child(1) {
     border-radius: 10px 7px 7px 70px;
@@ -104,8 +103,8 @@ const Wrapper = styled.section`
         background: #ffffff;
         box-shadow: 0px 26px 40px rgba(0, 0, 0, 0.12);
         border-radius: 16px;
-        padding: 20px;
-        height: 280px;
+        padding: 20px 20px 0;
+        // height: 280px;
 
         > div:nth-child(1) {
           background: rgba(228, 173, 43, 0.12);
