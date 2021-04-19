@@ -348,13 +348,9 @@ module.exports = {
     inset: {
       0: "0",
       1: "2rem",
-      64: "16rem",
-      "1/5": "20%",
-      auto: "auto",
-    },
-    top: {
-      0: "0",
-      1: "2rem",
+      "-1": "-2rem",
+      2: "4rem",
+      4: "6rem",
       64: "16rem",
       "1/5": "20%",
       auto: "auto",

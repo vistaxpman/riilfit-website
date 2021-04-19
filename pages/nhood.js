@@ -36,18 +36,18 @@ export default function Nhood() {
               src="/assets/homepage/banner-image.jpg"
             />
             <div className="absolute flex flex-col top-0 mt-28 ml-28 w-3/10">
-              <span className="text-white text-5xl font-bold uppercase leading-10">
+              <h2 className="text-white text-5xl font-bold uppercase leading-10">
                 Challenge
-              </span>
-              <span className="text-white text-5xl font-bold uppercase">
+              </h2>
+              <h2 className="text-white text-5xl font-bold uppercase">
                 Yourself
-              </span>
-              <span className="text-sm text-white mb-6">
+              </h2>
+              <h2 className="text-sm text-white mb-6">
                 Our rigs are used by serious gyms for serious fitness. We take
                 training to the next level with bespoke cooperative service,
                 design and fit out to ensure your gym is filled with the best
                 possible rig equipment to your specifications.
-              </span>
+              </h2>
               <div className="flex items-center">
                 <button className="flex justify-center items-center rounded-full w-40 py-2 text-white bg-custom-106 mr-8">
                   Get Started
@@ -89,6 +89,43 @@ export default function Nhood() {
                 </button>
               </div>
             </div>
+          </div>
+          <div className="flex justify-center">
+            <div className="w-7/10 flex items-center py-20">
+              <div className="w-1/2 flex flex-col">
+                <h2 className="text-3xl font-bold uppercase leading-8 mb-8">
+                  ABOUT US
+                </h2>
+                <span className="text-gray-700 leading-6 mb-6 mr-2">
+                  Our rigs are used by serious gyms for serious fitness. We take
+                  training to the next level with bespoke cooperative service,
+                  design and fit out to ensure your gym is filled with the best
+                  possible rig equipment to your specifications. Our rigs are
+                  used by serious gyms for serious fitness. We take training to
+                  the next level with bespoke cooperative service, design and
+                  fit out to ensure your gym
+                </span>
+                <button className="text-white bg-custom-106 w-40 rounded-full py-3">
+                  Read More
+                </button>
+              </div>
+              <div className="w-1/2 flex relative">
+                <img
+                  className="w-80 h-80 object-contain z-10"
+                  src="/assets/nhood/about-us.svg"
+                />
+                <div className="w-56 h-80 bg-custom-106 absolute -top-1 left-4"></div>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col items-center">
+            <h2 className="text-3xl font-bold uppercase leading-8 mb-8">
+              Our Services
+            </h2>
+            <span className="w-2/5 text-center">
+              Our services covers a wide range of gym &amp; spa activites which
+              includes pool, party, children gym and dancing.
+            </span>
           </div>
         </section>
       </Wrapper>
