@@ -19,7 +19,7 @@ export default function Home() {
   });
 
   useEffect(() => {
-    handleFetchGyms();
+    // handleFetchGyms();
   }, []);
 
   const handleFetchGyms = async () => {
@@ -45,7 +45,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Wrapper className="sleek-scrollbar">
-        <Header gyms={data?.gyms} />
+        {/* <Header gyms={data?.gyms} /> */}
+        <Header />
         <div className="home-wrapper flex flex-col">
           <Carousel />
           <OurClients />

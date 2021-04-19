@@ -102,7 +102,7 @@ export default function Header({ gyms, isAuthVisible }) {
             <ChevronDownIcon className="icon-down" />
             <div className="invisible group-hover:visible pt-8">
               <ul className="absolute inset-x-0 w-28 flex flex-col bg-custom-104">
-                {gyms?.map((gym, index) => (
+                {/* {gyms?.map((gym, index) => (
                   <li
                     key={index}
                     onClick={() => handleNavigateToRoute(`gym/${gym?.tag}`)}
@@ -111,7 +111,14 @@ export default function Header({ gyms, isAuthVisible }) {
                   >
                     {gym?.tag}
                   </li>
-                ))}
+                ))} */}
+                <li
+                  onClick={() => handleNavigateToRoute(`nhood`)}
+                  title="Nhood"
+                  className="text-white text-sm h-8 flex items-center capitalize px-2 whitespace-nowrap overflow-ellipsis overflow-hidden text-center text-white hover:bg-opacity-80"
+                >
+                  Nhood
+                </li>
               </ul>
             </div>
           </li>

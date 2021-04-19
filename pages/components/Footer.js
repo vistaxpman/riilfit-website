@@ -33,7 +33,7 @@ export default function Footer() {
             <div className="h-10 w-10 rounded-full border-1 border-orange-300 flex items-center justify-center mr-4">
               <img src="/assets/homepage/phone-icon.svg" className="h-4 w-4" />
             </div>
-            <span className="block text-sm w-64 opacity-90">0706 833 8631</span>
+            <span className="block text-sm w-64 opacity-90">+2349022169861</span>
           </div>
         </div>
         <div className="flex flex-col w-1.5/12">
