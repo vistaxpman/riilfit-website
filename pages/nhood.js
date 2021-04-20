@@ -122,10 +122,58 @@ export default function Nhood() {
             <h2 className="text-3xl font-bold uppercase leading-8 mb-8">
               Our Services
             </h2>
-            <span className="w-2/5 text-center">
+            <span className="w-2/5 text-center text-gray-700 leading-5 mb-16">
               Our services covers a wide range of gym &amp; spa activites which
               includes pool, party, children gym and dancing.
             </span>
+            <div className="flex flex-wrap w-4/5 mx-auto">
+              <div className="w-1/3 h-64 relative">
+                <img
+                  className="w-full h-64 object-cover"
+                  src="/assets/nhood/services/services1.jpg"
+                />
+                <div className="absolute top-0 flex h-full w-full items-center justify-center bg-black bg-opacity-50">
+                  <span className="text-white font-bold">Pool Service</span>
+                </div>
+              </div>
+              <div className="w-1/3 h-64 bg-black flex items-center justify-center">
+                <div className="bg-custom-106 flex flex-col items-center justify-center h-4/5.5 w-4/5.5">
+                  <span className="text-white font-bold text-md mb-4">
+                    Gym &amp; Spa
+                  </span>
+                  <span className="text-white text-center text-sm">
+                    Excepteur sint occaecat cupidatat non proident sunt iculpa
+                    qui officia deserunt mollit anim est. laborum sed
+                    perspiciatis unde omnis natus error sit voluptatem
+                    accusantium dolore mque laudantium totam rem aperiam.
+                  </span>
+                </div>
+              </div>
+              <div className="w-1/3 h-64 relative">
+                <img
+                  className="w-full h-64 object-cover"
+                  src="/assets/nhood/about-us.svg"
+                />
+                <div className="absolute top-0 flex h-full w-full items-center justify-center bg-black bg-opacity-50">
+                  <span className="text-white font-bold">Advanced Gym</span>
+                </div>
+              </div>
+              <div className="w-1/3 h-64 bg-black flex items-center justify-center">
+                <span className="text-white">Karoki Night</span>
+              </div>
+              <div className="w-1/3 h-64 relative">
+                <img
+                  className="w-full h-64 object-cover"
+                  src="/assets/homepage/row3-img.svg"
+                />
+                <div className="absolute top-0 flex h-full w-full items-center justify-center bg-black bg-opacity-50">
+                  <span className="text-white font-bold">Ladies Wednesday</span>
+                </div>
+              </div>
+              <div className="w-1/3 h-64 bg-black flex items-center justify-center">
+                <span className="text-white">Table Tennis Court</span>
+              </div>
+            </div>
           </div>
         </section>
       </Wrapper>
