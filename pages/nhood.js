@@ -20,7 +20,9 @@ export default function Nhood() {
           <nav className="ml-auto mr-12">
             <ul className="flex items-center text-sm">
               <li className="text-white ml-10">Home</li>
-              <li className="text-white ml-10">Services</li>
+              <li className="text-white ml-10">
+                <a href="#services">Services</a>
+              </li>
               <li className="text-white ml-10">Make a Bookings</li>
               <li className="text-white ml-10">Contact</li>
               <li className="border-1 border-custom-104 text-custom-104 px-6 py-1 rounded-sm ml-10">
@@ -118,7 +120,7 @@ export default function Nhood() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center" id="services">
             <h2 className="text-3xl font-bold uppercase leading-8 mb-8">
               Our Services
             </h2>
@@ -159,7 +161,7 @@ export default function Nhood() {
                 </div>
               </div>
               <div className="w-1/3 h-64 bg-black flex items-center justify-center">
-                <span className="text-white">Karoki Night</span>
+                <span className="text-white font-bold">Karoki Night</span>
               </div>
               <div className="w-1/3 h-64 relative">
                 <img
@@ -172,6 +174,46 @@ export default function Nhood() {
               </div>
               <div className="w-1/3 h-64 bg-black flex items-center justify-center">
                 <span className="text-white">Table Tennis Court</span>
+              </div>
+            </div>
+          </div>
+          <div className="w-full flex flex-col items-center py-24">
+            <div className="w-1/2 flex justify-center mb-20">
+              <div className="w-2.5/7 mr-10 flex justify-center items-center">
+                <img
+                  className="w-64 h-64 object-cover"
+                  src="/assets/nhood/services/services2.jpg"
+                />
+              </div>
+              <div className="w-2.5/7 flex flex-col justify-center">
+                <h2 className="text-3xl font-bold leading-8 mb-8">
+                  Yoga Classes
+                </h2>
+                <span className="text-sm">
+                  Our rigs are used by serious gyms for serious fitness. We take
+                  training to the next level with bespoke cooperative service,
+                  design and fit out to ensure your gym is filled with the best
+                  possible rig equipment to your specifications.
+                </span>
+              </div>
+            </div>
+            <div className="w-1/2 flex justify-center">
+              <div className="w-2.5/7 flex flex-col justify-center mr-10">
+                <h2 className="text-3xl font-bold leading-8 mb-8">
+                  Zumba Dance
+                </h2>
+                <span className="text-sm">
+                  Our rigs are used by serious gyms for serious fitness. We take
+                  training to the next level with bespoke cooperative service,
+                  design and fit out to ensure your gym is filled with the best
+                  possible rig equipment to your specifications.
+                </span>
+              </div>
+              <div className="w-2.5/7 flex justify-center items-center">
+                <img
+                  className="w-64 h-64 object-cover"
+                  src="/assets/nhood/services/services3.png"
+                />
               </div>
             </div>
           </div>
