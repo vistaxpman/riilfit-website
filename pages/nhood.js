@@ -6,6 +6,7 @@ import {
   AiOutlineStar,
   AiOutlineSmile,
 } from "react-icons/ai";
+import { IoLogoGooglePlaystore } from "react-icons/io5";
 import { MdFavoriteBorder } from "react-icons/md";
 import styled from "styled-components";
 
@@ -28,7 +29,7 @@ export default function Nhood() {
               <li className="text-white ml-10">
                 <a href="#services">Services</a>
               </li>
-              <li className="text-white ml-10">Make a Bookings</li>
+              <li className="text-white ml-10"><a href="#pricing">Make a Booking</a></li>
               <li className="text-white ml-10">Contact</li>
               <li className="border-1 border-custom-104 text-custom-104 px-6 py-1 rounded-sm ml-10">
                 Login
@@ -37,7 +38,7 @@ export default function Nhood() {
           </nav>
         </header>
         <section className="pt-20">
-          <div className="relative w-full h-128">
+          <section className="relative w-full h-128">
             <img
               className="mx-auto w-full h-full object-cover"
               src="/assets/homepage/banner-image.jpg"
@@ -64,8 +65,8 @@ export default function Nhood() {
                 </button>
               </div>
             </div>
-          </div>
-          <div className="flex">
+          </section>
+          <section className="flex">
             <div className="w-1/2 bg-custom-106 h-80 flex justify-center items-center">
               <div className="flex flex-col w-1/2.5">
                 <span className="text-3xl font-bold text-white uppercase leading-8 mb-4">
@@ -96,8 +97,8 @@ export default function Nhood() {
                 </button>
               </div>
             </div>
-          </div>
-          <div className="flex justify-center">
+          </section>
+          <section className="flex justify-center">
             <div className="w-7/10 flex items-center py-20">
               <div className="w-1/2 flex flex-col">
                 <h2 className="text-3xl font-bold uppercase leading-8 mb-8">
@@ -124,8 +125,8 @@ export default function Nhood() {
                 <div className="w-56 h-80 bg-custom-106 absolute -top-1 left-4"></div>
               </div>
             </div>
-          </div>
-          <div className="flex flex-col items-center" id="services">
+          </section>
+          <section className="flex flex-col items-center" id="services">
             <h2 className="text-3xl font-bold uppercase leading-8 mb-8">
               Our Services
             </h2>
@@ -181,8 +182,8 @@ export default function Nhood() {
                 <span className="text-white">Table Tennis Court</span>
               </div>
             </div>
-          </div>
-          <div className="w-full flex flex-col items-center py-24">
+          </section>
+          <section className="w-full flex flex-col items-center py-24">
             <div className="w-1/2 flex justify-center mb-20">
               <div className="w-2.5/7 mr-10 flex justify-center items-center">
                 <img
@@ -221,8 +222,8 @@ export default function Nhood() {
                 />
               </div>
             </div>
-          </div>
-          <div className="flex">
+          </section>
+          <section className="flex">
             <div className="w-2/5 h-80 bg-custom-106 flex flex-col items-center justify-center text-white">
               <h3 className="uppercase text-2xl font-bold mb-6">
                 UPCOMING events
@@ -236,8 +237,8 @@ export default function Nhood() {
             <div className="w-2/5 h-80 flex">
               <div className="h-full w-16 bg-custom-106"></div>
             </div>
-          </div>
-          <div className="flex items-center justify-center h-72 bg-black">
+          </section>
+          <section className="flex items-center justify-center h-72 bg-black">
             <div className="flex flex-col items-center mr-20">
               <AiOutlineClockCircle className="text-custom-106 h-10 w-10 mb-3" />
               <span className="text-white font-bold text-2xl mb-3">2314</span>
@@ -258,8 +259,8 @@ export default function Nhood() {
               <span className="text-white font-bold text-2xl mb-3">231</span>
               <span className="text-white text-sm">Satisfied Clients</span>
             </div>
-          </div>
-          <div className="flex flex-col items-center py-24" id="pricing">
+          </section>
+          <section className="flex flex-col items-center py-24" id="pricing">
             <h2 className="text-3xl font-bold uppercase leading-8 mb-8">
               Pricing
             </h2>
@@ -334,7 +335,76 @@ export default function Nhood() {
                 </button>
               </div>
             </div>
-          </div>
+          </section>
+          <section className="h-100 flex">
+            <div className="w-1/2 bg-black flex items-center justify-center">
+              <div className="flex flex-col w-1/2">
+                <span className="text-white text-sm mb-6">
+                  Join over 15,000+ to use RiilfitApp App
+                </span>
+                <h2 className="text-custom-106 text-3xl font-bold mb-4">
+                  Download Riilfiit <br /> today to get started
+                </h2>
+                <span className="text-white opacity-80 mb-6">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore.
+                </span>
+                <div className="flex justify-between">
+                  <div className="flex bg-white rounded-sm w-36 h-12 items-center justify-center">
+                    <IoLogoGooglePlaystore className="h-6 w-6 mr-2 text-custom-106" />
+                    <div className="flex flex-col rounded-md">
+                      <span className="text-xs font-medium opacity-70">
+                        Get Riilfit on
+                      </span>
+                      <span className="font-bold">Google Play</span>
+                    </div>
+                  </div>
+
+                  <div className="flex bg-white rounded-sm w-36 h-12 items-center justify-center">
+                    <IoLogoGooglePlaystore className="h-6 w-6 mr-2 text-custom-106" />
+                    <div className="flex flex-col rounded-md">
+                      <span className="text-xs font-medium opacity-70">
+                        Get Riilfit on
+                      </span>
+                      <span className="font-bold">App Store</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="w-1/2 bg-custom-107 flex items-center justify-center">
+              <img
+                className="w-full h-full object-contain"
+                src="/assets/nhood/services/app_screenshot.png"
+              />
+            </div>
+          </section>
+          <section className="flex justify-center py-48">
+            <div className="flex w-4/6">
+              <div className="w-1/2 flex flex-wrap">
+                <img
+                  className="h-48 w-1/2 object-cover"
+                  src="/assets/nhood/services/services5.jpg"
+                />
+                <img
+                  className="h-48 w-1/2 object-cover"
+                  src="/assets/nhood/services/services4.jpg"
+                />
+                <img
+                  className="h-48 w-1/2 object-cover"
+                  src="/assets/homepage/banner-image.jpg"
+                />
+                <img
+                  className="h-48 w-1/2 object-cover"
+                  src="/assets/nhood/services/services2.jpg"
+                />
+              </div>
+              <img
+                className="h-96 w-1/2 object-cover"
+                src="/assets/nhood/about-us.svg"
+              />
+            </div>
+          </section>
         </section>
       </Wrapper>
     </div>

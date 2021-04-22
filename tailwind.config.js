@@ -153,6 +153,7 @@ module.exports = {
         104: "#E4AD2B",
         105: "#575757",
         106: "#FFAA00",
+        107: "#F0F0F0",
       },
     },
     spacing: {
