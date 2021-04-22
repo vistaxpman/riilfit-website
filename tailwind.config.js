@@ -353,6 +353,7 @@ module.exports = {
       "-1": "-2rem",
       2: "4rem",
       4: "6rem",
+      10: "8rem",
       64: "16rem",
       "1/5": "20%",
       auto: "auto",

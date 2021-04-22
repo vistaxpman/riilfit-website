@@ -26,7 +26,7 @@ export default function Nhood() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Wrapper className="sleek-scrollbar">
-        <header className="h-20 bg-black fixed top-0 w-full flex items-center z-10">
+        <header className="h-20 bg-black fixed top-0 w-full flex items-center z-20">
           <img
             className="mx-auto w-16 h-16 object-contain"
             src="/assets/homepage/nhood-logo.svg"
@@ -40,7 +40,9 @@ export default function Nhood() {
               <li className="text-white ml-10">
                 <a href="#pricing">Make a Booking</a>
               </li>
-              <li className="text-white ml-10">Contact</li>
+              <li className="text-white ml-10">
+                <a href="#contact">Contact</a>
+              </li>
               <li className="border-1 border-custom-104 text-custom-104 px-6 py-1 rounded-sm ml-10">
                 Login
               </li>
@@ -195,11 +197,12 @@ export default function Nhood() {
           </section>
           <section className="w-full flex flex-col items-center py-24">
             <div className="w-1/2 flex justify-center mb-20">
-              <div className="w-2.5/7 mr-10 flex justify-center items-center">
+              <div className="w-2.5/7 mr-10 flex justify-center items-center relative">
                 <img
-                  className="w-64 h-64 object-cover"
+                  className="w-64 h-64 object-cover z-10"
                   src="/assets/nhood/services/services2.jpg"
                 />
+                <div className="absolute top-1 left-2 bg-custom-106 w-64 h-64"></div>
               </div>
               <div className="w-2.5/7 flex flex-col justify-center">
                 <h2 className="text-3xl font-bold leading-8 mb-8">
@@ -234,7 +237,7 @@ export default function Nhood() {
             </div>
           </section>
           <section className="flex">
-            <div className="w-2/5 h-80 bg-custom-106 flex flex-col items-center justify-center text-white">
+            <div className="w-2/5 h-128 bg-custom-106 flex flex-col items-center justify-center text-white">
               <h3 className="uppercase text-2xl font-bold mb-6">
                 UPCOMING events
               </h3>
@@ -244,8 +247,24 @@ export default function Nhood() {
                 more.
               </span>
             </div>
-            <div className="w-2/5 h-80 flex">
-              <div className="h-full w-16 bg-custom-106"></div>
+            <div className="w-2/5 h-128 flex items-center relative">
+              <div className="h-full w-16 bg-custom-106 absolute"></div>
+              <div className="flex flex-col bg-white z-10 mr-12">
+                <img
+                  className="h-72 w-72 object-cover"
+                  src="/assets/nhood/services/services4.jpg"
+                />
+                <span className="font-bold">Minute Full Body Stretch Enim</span>
+                <span className="text-sm opacity-70">20 September 2021</span>
+              </div>
+              <div className="flex flex-col bg-white z-10 mr- 16">
+                <img
+                  className="h-72 w-72 object-cover"
+                  src="/assets/nhood/about-us.svg"
+                />
+                <span className="font-bold">Minute Full Body Stretch Enim</span>
+                <span className="text-sm opacity-70">20 September 2021</span>
+              </div>
             </div>
           </section>
           <section className="flex items-center justify-center h-72 bg-black">
@@ -449,7 +468,10 @@ export default function Nhood() {
               <span className="text-sm">Director</span>
             </div>
           </section>
-          <section className="flex flex-col items-center justify-center bg-contact h-144 w-full">
+          <section
+            className="flex flex-col items-center justify-center bg-contact h-144 w-full"
+            id="contact"
+          >
             <form className="h-8/10 w-1/2 bg-white shadow-md rounded-md flex flex-col items-center justify-center py-10">
               <h2 className="text-3xl font-bold uppercase leading-8 mb-4">
                 Contact
