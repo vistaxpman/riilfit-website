@@ -55,7 +55,7 @@ export default function Nhood() {
               className="mx-auto w-full h-full object-cover"
               src="/assets/homepage/banner-image.jpg"
             />
-            <div className="absolute flex flex-col top-0 mt-28 ml-28 w-3/10">
+            <div className="absolute flex flex-col top-0 mt-28 ml-28 w-3/10 md:w-1/2 smdownwards:w-1/2">
               <h2 className="text-white text-5xl font-bold uppercase leading-10">
                 Challenge
               </h2>
@@ -73,7 +73,7 @@ export default function Nhood() {
                   Get Started
                 </button>
                 <button className="flex justify-center items-center rounded-full w-40 py-2 text-white border-1 border-custom-106">
-                  Make a Booking
+                  <a href="#pricing">Make a Booking</a>
                 </button>
               </div>
             </div>
@@ -90,7 +90,7 @@ export default function Nhood() {
                   the best shape of their lives and reaching
                 </span>
                 <button className="text-white bg-black w-40 rounded-full py-3">
-                  Book Now
+                  <a href="#pricing">Book Now</a>
                 </button>
               </div>
             </div>
@@ -105,7 +105,7 @@ export default function Nhood() {
                   the best shape of their lives and reaching
                 </span>
                 <button className="text-white bg-custom-106 w-40 rounded-full py-3">
-                  Book Now
+                  <a href="#pricing">Book Now</a>
                 </button>
               </div>
             </div>
