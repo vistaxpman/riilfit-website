@@ -1,7 +1,12 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import Head from "next/head";
 import getConfig from "next/config";
+import {
+  AiOutlineClockCircle,
+  AiOutlineStar,
+  AiOutlineSmile,
+} from "react-icons/ai";
+import { MdFavoriteBorder } from "react-icons/md";
 import styled from "styled-components";
 
 export default function Nhood() {
@@ -214,6 +219,119 @@ export default function Nhood() {
                   className="w-64 h-64 object-cover"
                   src="/assets/nhood/services/services3.png"
                 />
+              </div>
+            </div>
+          </div>
+          <div className="flex">
+            <div className="w-2/5 h-80 bg-custom-106 flex flex-col items-center justify-center text-white">
+              <h3 className="uppercase text-2xl font-bold mb-6">
+                UPCOMING events
+              </h3>
+              <span className="text-sm w-1/2 leading-5">
+                We provide you with upcoming events here, our events such as
+                Karoke Night, Ladies night, Walkout day, Pool party and lots
+                more.
+              </span>
+            </div>
+            <div className="w-2/5 h-80 flex">
+              <div className="h-full w-16 bg-custom-106"></div>
+            </div>
+          </div>
+          <div className="flex items-center justify-center h-72 bg-black">
+            <div className="flex flex-col items-center mr-20">
+              <AiOutlineClockCircle className="text-custom-106 h-10 w-10 mb-3" />
+              <span className="text-white font-bold text-2xl mb-3">2314</span>
+              <span className="text-white text-sm">Working Hours</span>
+            </div>
+            <div className="flex flex-col items-center mr-20">
+              <MdFavoriteBorder className="text-custom-106 h-10 w-10 mb-3" />
+              <span className="text-white font-bold text-2xl mb-3">314</span>
+              <span className="text-white text-sm">Happy Clients</span>
+            </div>
+            <div className="flex flex-col items-center mr-20">
+              <AiOutlineStar className="text-custom-106 h-10 w-10 mb-3" />
+              <span className="text-white font-bold text-2xl mb-3">214</span>
+              <span className="text-white text-sm">Winning Award</span>
+            </div>
+            <div className="flex flex-col items-center mr-20">
+              <AiOutlineSmile className="text-custom-106 h-10 w-10 mb-3" />
+              <span className="text-white font-bold text-2xl mb-3">231</span>
+              <span className="text-white text-sm">Satisfied Clients</span>
+            </div>
+          </div>
+          <div className="flex flex-col items-center py-24" id="pricing">
+            <h2 className="text-3xl font-bold uppercase leading-8 mb-8">
+              Pricing
+            </h2>
+            <span className="w-2/5 text-center text-gray-700 leading-5 mb-16">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+              quis convallis ligula. Quisque malesuada enim at neque finibus
+              sollicitudin.
+            </span>
+            <div className="w-7/10 grid grid-cols-4 gap-x-4">
+              <div className="flex flex-col items-center py-6 rounded-md border-1 border-gray-100">
+                <span className="text-sm font-bold mb-6">Daily</span>
+                <div className="flex mb-10">
+                  <span className="text-xs font-bold">NGN</span>
+                  <span className="text-2xl font-bold">1000</span>
+                </div>
+                <div className="flex flex-col items-center opacity-80 text-sm mb-10">
+                  <span className="mb-2">1 Day a Week</span>
+                  <span className="mb-2">GYM Access &amp; Equipment </span>
+                  <span className="mb-2">Personal Trainer </span>
+                  <span className="">Get Suplement</span>
+                </div>
+                <button className="uppercase text-sm bg-custom-106 text-white rounded-full px-8 py-3">
+                  Join Now
+                </button>
+              </div>
+              <div className="flex flex-col items-center py-6 rounded-md border-1 border-custom-106">
+                <span className="text-sm font-bold mb-6">Weekly</span>
+                <div className="flex mb-10">
+                  <span className="text-xs font-bold">NGN</span>
+                  <span className="text-2xl font-bold">4000</span>
+                </div>
+                <div className="flex flex-col items-center opacity-80 text-sm mb-10">
+                  <span className="mb-2">7 Day a Week</span>
+                  <span className="mb-2">GYM Access &amp; Equipment </span>
+                  <span className="mb-2">Personal Trainer </span>
+                  <span className="">Get Suplement</span>
+                </div>
+                <button className="uppercase text-sm bg-custom-106 text-white rounded-full px-8 py-3">
+                  Join Now
+                </button>
+              </div>
+              <div className="flex flex-col items-center py-6 rounded-md border-1 border-gray-100">
+                <span className="text-sm font-bold mb-6">Montly/Premium</span>
+                <div className="flex mb-10">
+                  <span className="text-xs font-bold">NGN</span>
+                  <span className="text-2xl font-bold">8000</span>
+                </div>
+                <div className="flex flex-col items-center opacity-80 text-sm mb-10">
+                  <span className="mb-2">31 Day a Week</span>
+                  <span className="mb-2">GYM Access &amp; Equipment </span>
+                  <span className="mb-2">Personal Trainer </span>
+                  <span className="">Get Suplement</span>
+                </div>
+                <button className="uppercase text-sm bg-custom-106 text-white rounded-full px-8 py-3">
+                  Join Now
+                </button>
+              </div>
+              <div className="flex flex-col items-center py-6 rounded-md border-1 border-gray-100">
+                <span className="text-sm font-bold mb-6">Montly/Exclusive</span>
+                <div className="flex mb-10">
+                  <span className="text-xs font-bold">NGN</span>
+                  <span className="text-2xl font-bold">12000/Month</span>
+                </div>
+                <div className="flex flex-col items-center opacity-80 text-sm mb-10">
+                  <span className="mb-2">On order</span>
+                  <span className="mb-2">GYM Access &amp; Equipment </span>
+                  <span className="mb-2">Personal Trainer </span>
+                  <span className="">Get Suplement</span>
+                </div>
+                <button className="uppercase text-sm bg-custom-106 text-white rounded-full px-8 py-3">
+                  Join Now
+                </button>
               </div>
             </div>
           </div>
