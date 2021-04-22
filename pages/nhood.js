@@ -8,6 +8,14 @@ import {
 } from "react-icons/ai";
 import { IoLogoGooglePlaystore } from "react-icons/io5";
 import { MdFavoriteBorder } from "react-icons/md";
+import { TiLocation, TiSocialTwitterCircular } from "react-icons/ti";
+import {
+  FaPhoneAlt,
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaYoutube,
+} from "react-icons/fa";
 import styled from "styled-components";
 
 export default function Nhood() {
@@ -29,7 +37,9 @@ export default function Nhood() {
               <li className="text-white ml-10">
                 <a href="#services">Services</a>
               </li>
-              <li className="text-white ml-10"><a href="#pricing">Make a Booking</a></li>
+              <li className="text-white ml-10">
+                <a href="#pricing">Make a Booking</a>
+              </li>
               <li className="text-white ml-10">Contact</li>
               <li className="border-1 border-custom-104 text-custom-104 px-6 py-1 rounded-sm ml-10">
                 Login
@@ -37,7 +47,7 @@ export default function Nhood() {
             </ul>
           </nav>
         </header>
-        <section className="pt-20">
+        <div className="pt-20">
           <section className="relative w-full h-128">
             <img
               className="mx-auto w-full h-full object-cover"
@@ -405,7 +415,115 @@ export default function Nhood() {
               />
             </div>
           </section>
-        </section>
+          <section className="flex flex-col justify-center items-center py-24 bg-custom-107">
+            <div className="w-1/2 text-center mb-16">
+              “Etiam maximus, justo ut pellentesque egestas, erat sapien mollis
+              massa, nec porta nisl quam eu arcu. Donec sit amet congue lectus.
+              Quisque molestie consectetur efficitur. Nullam egestas, tellus
+              vitae suscipit elementum.”
+            </div>
+            <div className="flex items-center mb-10">
+              <img
+                className="h-12 w-12 rounded-full object-cover mr-12"
+                src="https://images.unsplash.com/photo-1582328555849-f56e78425d1d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=393&q=80"
+              />
+              <img
+                className="h-12 w-12 rounded-full object-cover mr-12"
+                src="https://images.unsplash.com/photo-1546456073-ea246a7bd25f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmxhY2slMjBwZXJzb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+              />
+              <img
+                className="h-16 w-16 rounded-full object-cover mr-12"
+                src="https://images.unsplash.com/photo-1507152832244-10d45c7eda57?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80"
+              />
+              <img
+                className="h-12 w-12 rounded-full object-cover mr-12"
+                src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+              />
+              <img
+                className="h-12 w-12 rounded-full object-cover"
+                src="https://images.unsplash.com/photo-1576695444267-40cdd214f06e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzN8fGJsYWNrJTIwcGVyc29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+              />
+            </div>
+            <div className="flex flex-col items-center">
+              <span className="font-bold text-sm">Esther Onaoh</span>
+              <span className="text-sm">Director</span>
+            </div>
+          </section>
+          <section className="flex flex-col items-center justify-center bg-contact h-144 w-full">
+            <form className="h-8/10 w-1/2 bg-white shadow-md rounded-md flex flex-col items-center justify-center py-10">
+              <h2 className="text-3xl font-bold uppercase leading-8 mb-4">
+                Contact
+              </h2>
+              <span className="opacity-70 w-4/5 text-center mb-8">
+                You need a team that listens; one that meticulously travels deep
+                into your mind to understand your needs and craft solutions that
+                make you stand out in your industry.
+              </span>
+              <div className="flex justify-between w-8/10 mb-4">
+                <input
+                  placeholder="Name"
+                  className="w-2.5/5 h-10 bg-custom-107 rounded-md px-2"
+                />
+                <input
+                  placeholder="Email"
+                  className="w-2.5/5 h-10 bg-custom-107 rounded-md px-2"
+                />
+              </div>
+              <textarea
+                className="bg-custom-107 w-8/10 h-24 border-none resize-none mb-6"
+                placeholder="Message"
+              ></textarea>
+              <button className="bg-custom-106 text-white h-12 w-36 items-center justify-center rounded-full">
+                Read More
+              </button>
+            </form>
+          </section>
+          <footer className="bg-black flex justify-center py-20 px-48">
+            <div className="flex flex-col w-3/10 mr-16">
+              <span className="text-white font-bold text-sm mb-4">
+                Get In Touch
+              </span>
+              <div className="flex items-start mb-4">
+                <TiLocation className="h-12 w-12 mr-2 text-custom-106" />
+                <span className="text-white opacity-40">
+                  2 Alhaji Estate, Water Gate Hotel Opposite Obio Akpo LGA
+                  Council HQ Obio Akpo
+                </span>
+              </div>
+              <div className="flex items-center">
+                <FaPhoneAlt className="h-4 w-4 mr-2 text-custom-106" />
+                <span className="text-white opacity-40">+2349022169861</span>
+              </div>
+            </div>
+            <div className="flex flex-col w-1/5 mr-16">
+              <span className="text-white font-bold text-sm mb-4">
+                Follow Us
+              </span>
+              <div className="flex items-center">
+                <FaFacebookF className="h-8 w-8 px-2 py-2 items-center justify-center border-1 border-gray-900 rounded-full mr-3 text-custom-108" />
+                <FaTwitter className="h-8 w-8 px-2 py-2 items-center justify-center border-1 border-gray-900 rounded-full mr-3 text-custom-108" />
+                <FaInstagram className="h-8 w-8 px-2 py-2 items-center justify-center border-1 border-gray-900 rounded-full mr-3 text-custom-108" />
+                <FaYoutube className="h-8 w-8 px-2 py-2 items-center justify-center border-1 border-gray-900 rounded-full text-custom-108" />
+              </div>
+            </div>
+            <div className="flex flex-col w-3/10">
+              <span className="text-white font-bold text-sm mb-4">
+                Newsletter
+              </span>
+              <span className="text-white opacity-40 mb-4">
+                Etiam maximus, justo ut pellentesque egestas, erat sapien mollis
+                massa, nec porta nisl quam eu arcu.
+              </span>
+              <input
+                placeholder="Your Email"
+                className="h-10 text-sm rounded-md mb-4 px-2 bg-gray-700 bg-opacity-20 border-1 border-gray-900 border-opacity-70 text-gray-500"
+              />
+              <button className="bg-custom-106 text-white h-10 w-24 items-center justify-center rounded-full">
+                Send
+              </button>
+            </div>
+          </footer>
+        </div>
       </Wrapper>
     </div>
   );
@@ -419,5 +537,9 @@ const Wrapper = styled.main`
 
   .home-wrapper {
     margin-top: 80px;
+  }
+
+  .bg-contact {
+    background-image: url("/assets/nhood/contact-us.svg");
   }
 `;
