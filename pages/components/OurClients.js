@@ -20,8 +20,8 @@ export default function OurClients() {
         }}
       ></div>
       <div className="row1-wrapper py-20 px-20">
-        <div className="row1-content flex justify-between items-center h-full smdownwards:flex-col">
-          <div className="flex flex-col w-3/10 smdownwards:w-full smdownwards:mb-20">
+        <div className="row1-content flex justify-between items-center h-full sm:flex-col">
+          <div className="flex flex-col w-3/10 sm:w-full sm:mb-20">
             <div>
               <span></span>
               <span>Our Clients</span>
@@ -34,7 +34,7 @@ export default function OurClients() {
               possible rig equipment to your specifications.
             </span>
           </div>
-          <div className="flex flex-col w-3/5 h-full justify-center smdownwards:w-full">
+          <div className="flex flex-col w-3/5 h-full justify-center sm:w-full">
             <div>
               <div>
                 <img

@@ -55,31 +55,33 @@ export default function Nhood() {
               className="mx-auto w-full h-full object-cover"
               src="/assets/homepage/banner-image.jpg"
             />
-            <div className="absolute flex flex-col top-0 mt-28 ml-28 w-3/10 md:w-1/2 smdownwards:w-1/2">
-              <h2 className="text-white text-5xl font-bold uppercase leading-10">
-                Challenge
-              </h2>
-              <h2 className="text-white text-5xl font-bold uppercase">
-                Yourself
-              </h2>
-              <h2 className="text-sm text-white mb-6">
-                Our rigs are used by serious gyms for serious fitness. We take
-                training to the next level with bespoke cooperative service,
-                design and fit out to ensure your gym is filled with the best
-                possible rig equipment to your specifications.
-              </h2>
-              <div className="flex items-center">
-                <button className="flex justify-center items-center rounded-full w-40 py-2 text-white bg-custom-106 mr-8">
-                  Get Started
-                </button>
-                <button className="flex justify-center items-center rounded-full w-40 py-2 text-white border-1 border-custom-106">
-                  <a href="#pricing">Make a Booking</a>
-                </button>
+            <div className="absolute flex top-0 mt-28 ml-48 w-3/10 md:w-1/2 sm:w-8/10 sm:ml-8">
+              <div className="flex flex-col w-full">
+                <h2 className="text-white text-5xl font-bold uppercase leading-10">
+                  Challenge
+                </h2>
+                <h2 className="text-white text-5xl font-bold uppercase">
+                  Yourself
+                </h2>
+                <h2 className="text-sm text-white mb-6">
+                  Our rigs are used by serious gyms for serious fitness. We take
+                  training to the next level with bespoke cooperative service,
+                  design and fit out to ensure your gym is filled with the best
+                  possible rig equipment to your specifications.
+                </h2>
+                <div className="flex items-center">
+                  <button className="flex justify-center items-center rounded-full w-40 py-2 text-white bg-custom-106 mr-8">
+                    Get Started
+                  </button>
+                  <button className="flex justify-center items-center rounded-full w-40 py-2 text-white border-1 border-custom-106">
+                    <a href="#pricing">Make a Booking</a>
+                  </button>
+                </div>
               </div>
             </div>
           </section>
-          <section className="flex">
-            <div className="w-1/2 bg-custom-106 h-80 flex justify-center items-center">
+          <section className="flex flex-wrap">
+            <div className="w-1/2 bg-custom-106 h-96 flex justify-center items-center sm:w-full">
               <div className="flex flex-col w-1/2.5">
                 <span className="text-3xl font-bold text-white uppercase leading-8 mb-4">
                   Membership start from NGN8,000/m
@@ -94,7 +96,7 @@ export default function Nhood() {
                 </button>
               </div>
             </div>
-            <div className="w-1/2 bg-black h-80 flex justify-center items-center">
+            <div className="w-1/2 bg-black h-96 flex justify-center items-center sm:w-full">
               <div className="flex flex-col w-1/2.5">
                 <span className="text-3xl font-bold text-white uppercase leading-8 mb-4">
                   Join Today &amp; Get some of Free package
@@ -111,8 +113,8 @@ export default function Nhood() {
             </div>
           </section>
           <section className="flex justify-center">
-            <div className="w-7/10 flex items-center py-20">
-              <div className="w-1/2 flex flex-col">
+            <div className="w-7/10 flex items-center justify-center py-20 flex-wrap sm:w-full">
+              <div className="w-1/2 flex flex-col sm:w-8/10">
                 <h2 className="text-3xl font-bold uppercase leading-8 mb-8">
                   ABOUT US
                 </h2>
@@ -129,12 +131,14 @@ export default function Nhood() {
                   Read More
                 </button>
               </div>
-              <div className="w-1/2 flex relative">
-                <img
-                  className="w-80 h-80 object-contain z-10"
-                  src="/assets/nhood/about-us.svg"
-                />
-                <div className="w-56 h-80 bg-custom-106 absolute -top-1 left-4"></div>
+              <div className="w-1/2 flex justify-center sm:w-full sm:mt-32">
+                <div className="flex relative">
+                  <img
+                    className="w-80 h-80 object-contain z-10"
+                    src="/assets/nhood/about-us.svg"
+                  />
+                  <div className="w-56 h-80 bg-custom-106 absolute -top-1 left-4"></div>
+                </div>
               </div>
             </div>
           </section>
@@ -142,12 +146,12 @@ export default function Nhood() {
             <h2 className="text-3xl font-bold uppercase leading-8 mb-8">
               Our Services
             </h2>
-            <span className="w-2/5 text-center text-gray-700 leading-5 mb-16">
+            <span className="w-2/5 text-center text-gray-700 leading-5 mb-16 sm:w-8/10 sm:text-sm">
               Our services covers a wide range of gym &amp; spa activites which
               includes pool, party, children gym and dancing.
             </span>
-            <div className="flex flex-wrap w-4/5 mx-auto">
-              <div className="w-1/3 h-64 relative">
+            <div className="flex flex-wrap w-4/5 mx-auto sm:w-9/10">
+              <div className="w-1/3 h-64 relative sm:w-1/2">
                 <img
                   className="w-full h-64 object-cover"
                   src="/assets/nhood/services/services1.jpg"
@@ -156,12 +160,12 @@ export default function Nhood() {
                   <span className="text-white font-bold">Pool Service</span>
                 </div>
               </div>
-              <div className="w-1/3 h-64 bg-black flex items-center justify-center">
-                <div className="bg-custom-106 flex flex-col items-center justify-center h-4/5.5 w-4/5.5">
+              <div className="w-1/3 h-64 bg-black flex items-center justify-center sm:w-1/2">
+                <div className="bg-custom-106 flex flex-col items-center justify-center h-4/5.5 w-4/5.5 sm:h-9/10">
                   <span className="text-white font-bold text-md mb-4">
                     Gym &amp; Spa
                   </span>
-                  <span className="text-white text-center text-sm">
+                  <span className="text-white text-center text-sm sm:hidden">
                     Excepteur sint occaecat cupidatat non proident sunt iculpa
                     qui officia deserunt mollit anim est. laborum sed
                     perspiciatis unde omnis natus error sit voluptatem
@@ -169,7 +173,7 @@ export default function Nhood() {
                   </span>
                 </div>
               </div>
-              <div className="w-1/3 h-64 relative">
+              <div className="w-1/3 h-64 relative sm:w-1/2">
                 <img
                   className="w-full h-64 object-cover"
                   src="/assets/nhood/about-us.svg"
@@ -178,10 +182,10 @@ export default function Nhood() {
                   <span className="text-white font-bold">Advanced Gym</span>
                 </div>
               </div>
-              <div className="w-1/3 h-64 bg-black flex items-center justify-center">
+              <div className="w-1/3 h-64 bg-black flex items-center justify-center sm:w-1/2">
                 <span className="text-white font-bold">Karoki Night</span>
               </div>
-              <div className="w-1/3 h-64 relative">
+              <div className="w-1/3 h-64 relative sm:w-1/2">
                 <img
                   className="w-full h-64 object-cover"
                   src="/assets/homepage/row3-img.svg"
@@ -190,21 +194,21 @@ export default function Nhood() {
                   <span className="text-white font-bold">Ladies Wednesday</span>
                 </div>
               </div>
-              <div className="w-1/3 h-64 bg-black flex items-center justify-center">
+              <div className="w-1/3 h-64 bg-black flex items-center justify-center sm:w-1/2">
                 <span className="text-white">Table Tennis Court</span>
               </div>
             </div>
           </section>
           <section className="w-full flex flex-col items-center py-24">
-            <div className="w-1/2 flex justify-center mb-20">
-              <div className="w-2.5/7 mr-10 flex justify-center items-center relative">
+            <div className="w-1/2 flex flex-wrap justify-center mb-20 sm:w-8/10">
+              <div className="w-2.5/5 mr-10 flex justify-center items-center relative sm:w-full sm:mr-0 sm:mb-10">
                 <img
                   className="w-64 h-64 object-cover z-10"
                   src="/assets/nhood/services/services2.jpg"
                 />
-                <div className="absolute top-1 left-2 bg-custom-106 w-64 h-64"></div>
+                <div className="absolute top-1 left-2 bg-custom-106 w-64 h-64 md:hidden sm:hidden"></div>
               </div>
-              <div className="w-2.5/7 flex flex-col justify-center">
+              <div className="w-2.5/5 flex flex-col justify-center sm:w-8/10">
                 <h2 className="text-3xl font-bold leading-8 mb-8">
                   Yoga Classes
                 </h2>
@@ -216,8 +220,8 @@ export default function Nhood() {
                 </span>
               </div>
             </div>
-            <div className="w-1/2 flex justify-center">
-              <div className="w-2.5/7 flex flex-col justify-center mr-10">
+            <div className="w-1/2 flex flex-wrap justify-center sm:w-8/10">
+              <div className="w-2.5/5 flex flex-col justify-center mr-10 sm:w-8/10 sm:mr-0 sm:mb-10">
                 <h2 className="text-3xl font-bold leading-8 mb-8">
                   Zumba Dance
                 </h2>
@@ -228,7 +232,7 @@ export default function Nhood() {
                   possible rig equipment to your specifications.
                 </span>
               </div>
-              <div className="w-2.5/7 flex justify-center items-center">
+              <div className="w-2.5/5 flex justify-center items-center sm:w-full">
                 <img
                   className="w-64 h-64 object-cover"
                   src="/assets/nhood/services/services3.png"
@@ -236,8 +240,8 @@ export default function Nhood() {
               </div>
             </div>
           </section>
-          <section className="flex">
-            <div className="w-2/5 h-128 bg-custom-106 flex flex-col items-center justify-center text-white">
+          <section className="flex flex-wrap">
+            <div className="w-2/5 h-128 bg-custom-106 flex flex-col items-center justify-center text-white sm:w-full">
               <h3 className="uppercase text-2xl font-bold mb-6">
                 UPCOMING events
               </h3>
@@ -247,43 +251,43 @@ export default function Nhood() {
                 more.
               </span>
             </div>
-            <div className="w-2/5 h-128 flex items-center relative">
-              <div className="h-full w-16 bg-custom-106 absolute"></div>
-              <div className="flex flex-col bg-white z-10 mr-12">
+            <div className="w-2/5 h-128 flex items-center relative sm:w-full sm:px-2">
+              <div className="h-full w-16 bg-custom-106 absolute sm:hidden"></div>
+              <div className="flex flex-col bg-white z-10 mr-12 sm:mr-4">
                 <img
-                  className="h-72 w-72 object-cover"
+                  className="h-72 w-72 object-cover mb-2"
                   src="/assets/nhood/services/services4.jpg"
                 />
-                <span className="font-bold">Minute Full Body Stretch Enim</span>
-                <span className="text-sm opacity-70">20 September 2021</span>
+                <span className="font-bold leading-5 sm:text-sm">Minute Full Body Stretch Enim</span>
+                <span className="text-sm opacity-70  sm:text-xs">20 September 2021</span>
               </div>
               <div className="flex flex-col bg-white z-10 mr- 16">
                 <img
-                  className="h-72 w-72 object-cover"
+                  className="h-72 w-72 object-cover mb-2"
                   src="/assets/nhood/about-us.svg"
                 />
-                <span className="font-bold">Minute Full Body Stretch Enim</span>
-                <span className="text-sm opacity-70">20 September 2021</span>
+                <span className="font-bold leading-5 sm:text-sm">Minute Full Body Stretch Enim</span>
+                <span className="text-sm opacity-70  sm:text-xs">20 September 2021</span>
               </div>
             </div>
           </section>
-          <section className="flex items-center justify-center h-72 bg-black">
-            <div className="flex flex-col items-center mr-20">
+          <section className="flex flex-wrap items-center justify-center bg-black py-12">
+            <div className="flex flex-col items-center w-1/4 sm:w-1/2 sm:mb-8">
               <AiOutlineClockCircle className="text-custom-106 h-10 w-10 mb-3" />
               <span className="text-white font-bold text-2xl mb-3">2314</span>
               <span className="text-white text-sm">Working Hours</span>
             </div>
-            <div className="flex flex-col items-center mr-20">
+            <div className="flex flex-col items-center w-1/4 sm:w-1/2 sm:mb-8">
               <MdFavoriteBorder className="text-custom-106 h-10 w-10 mb-3" />
               <span className="text-white font-bold text-2xl mb-3">314</span>
               <span className="text-white text-sm">Happy Clients</span>
             </div>
-            <div className="flex flex-col items-center mr-20">
+            <div className="flex flex-col items-center w-1/4 sm:w-1/2">
               <AiOutlineStar className="text-custom-106 h-10 w-10 mb-3" />
               <span className="text-white font-bold text-2xl mb-3">214</span>
               <span className="text-white text-sm">Winning Award</span>
             </div>
-            <div className="flex flex-col items-center mr-20">
+            <div className="flex flex-col items-center w-1/4 sm:w-1/2">
               <AiOutlineSmile className="text-custom-106 h-10 w-10 mb-3" />
               <span className="text-white font-bold text-2xl mb-3">231</span>
               <span className="text-white text-sm">Satisfied Clients</span>

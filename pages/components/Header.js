@@ -57,10 +57,10 @@ export default function Header({ gyms, isAuthVisible }) {
     <>
       <Wrapper>
         <img
-          className="my-auto w-48 md:w-40 h-20 object-contain mb-4 ml-10 md:ml-2 smdownwards:ml-0"
+          className="my-auto w-48 md:w-40 h-20 object-contain mb-4 ml-10 md:ml-2 sm:ml-0"
           src="/assets/homepage/logo.svg"
         />
-        <ul className="flex items-center mr-10  md:mr-2 smdownwards:hidden">
+        <ul className="flex items-center mr-10  md:mr-2 sm:hidden">
           <li className="hover:text-custom-102 mr-10 md:mr-6 cursor-pointer flex items-center">
             <a
               href="/"
@@ -154,7 +154,7 @@ export default function Header({ gyms, isAuthVisible }) {
         </ul>
 
         <MenuIcon
-          className="text-white mr-4 hidden smdownwards:block"
+          className="text-white mr-4 hidden sm:block"
           onClick={() => toggleMobileMenuVisibility()}
         />
 
