@@ -8,7 +8,7 @@ import {
 } from "react-icons/ai";
 import { IoLogoGooglePlaystore } from "react-icons/io5";
 import { MdFavoriteBorder } from "react-icons/md";
-import { TiLocation, TiSocialTwitterCircular } from "react-icons/ti";
+import { TiLocation } from "react-icons/ti";
 import {
   FaPhoneAlt,
   FaFacebookF,
@@ -16,9 +16,22 @@ import {
   FaInstagram,
   FaYoutube,
 } from "react-icons/fa";
+import { RiMenu3Fill } from "react-icons/ri";
+import { IoMdClose } from "react-icons/io";
 import styled from "styled-components";
+import { combineData } from "../utils";
 
 export default function Nhood() {
+  const [data, setData] = useState({
+    isMobileMenuVisible: false,
+  });
+
+  const toggleMobileMenuVisibility = () => {
+    let { isMobileMenuVisible } = data;
+    isMobileMenuVisible = !isMobileMenuVisible;
+    setData((data) => combineData(data, { isMobileMenuVisible }));
+  };
+
   return (
     <div>
       <Head>
@@ -28,10 +41,10 @@ export default function Nhood() {
       <Wrapper className="sleek-scrollbar">
         <header className="h-20 bg-black fixed top-0 w-full flex items-center z-20">
           <img
-            className="mx-auto w-16 h-16 object-contain"
+            className="mx-auto w-16 h-16 object-contain sm:ml-4 sm:mr-0 sm:w-12 sm:h-12"
             src="/assets/homepage/nhood-logo.svg"
           />
-          <nav className="ml-auto mr-12">
+          <nav className="ml-auto mr-12 sm:hidden">
             <ul className="flex items-center text-sm">
               <li className="text-white ml-10">Home</li>
               <li className="text-white ml-10">
@@ -48,7 +61,59 @@ export default function Nhood() {
               </li>
             </ul>
           </nav>
+          <RiMenu3Fill
+            className="hidden text-white h-8 w-8 ml-auto mr-4 sm:flex"
+            onClick={() => toggleMobileMenuVisibility()}
+          />
         </header>
+        {data?.isMobileMenuVisible ? (
+          <section className="fixed top-0 h-full w-full flex z-100">
+            <nav className="w-7/10 bg-black p-8">
+              <IoMdClose
+                className="text-gray-600 h-6 w-6 ml-auto mb-16"
+                onClick={() => toggleMobileMenuVisibility()}
+              />
+              <ul className="flex flex-col items-center text-sm">
+                <li className="text-white mb-8">
+                  <span onClick={() => toggleMobileMenuVisibility()}>Home</span>
+                </li>
+                <li className="text-white mb-8">
+                  <a
+                    href="#services"
+                    onClick={() => toggleMobileMenuVisibility()}
+                  >
+                    Services
+                  </a>
+                </li>
+                <li className="text-white mb-8">
+                  <a
+                    href="#pricing"
+                    onClick={() => toggleMobileMenuVisibility()}
+                  >
+                    Make a Booking
+                  </a>
+                </li>
+                <li className="text-white mb-8">
+                  <a
+                    href="#contact"
+                    onClick={() => toggleMobileMenuVisibility()}
+                  >
+                    Contact
+                  </a>
+                </li>
+                <li className="border-1 border-custom-104 text-custom-104 px-6 py-1 rounded-sm">
+                  <span>
+                    Login
+                  </span>
+                </li>
+              </ul>
+            </nav>
+            <div
+              className="w-3/10 bg-gray-900 bg-opacity-50"
+              onClick={() => toggleMobileMenuVisibility()}
+            ></div>
+          </section>
+        ) : null}
         <div className="pt-20">
           <section className="relative w-full h-128">
             <img
@@ -245,7 +310,7 @@ export default function Nhood() {
               <h3 className="uppercase text-2xl font-bold mb-6">
                 UPCOMING events
               </h3>
-              <span className="text-sm w-1/2 leading-5">
+              <span className="text-sm w-1/2 leading-5 sm:text-center">
                 We provide you with upcoming events here, our events such as
                 Karoke Night, Ladies night, Walkout day, Pool party and lots
                 more.
@@ -258,16 +323,24 @@ export default function Nhood() {
                   className="h-72 w-72 object-cover mb-2"
                   src="/assets/nhood/services/services4.jpg"
                 />
-                <span className="font-bold leading-5 sm:text-sm">Minute Full Body Stretch Enim</span>
-                <span className="text-sm opacity-70  sm:text-xs">20 September 2021</span>
+                <span className="font-bold leading-5 sm:text-sm">
+                  Minute Full Body Stretch Enim
+                </span>
+                <span className="text-sm opacity-70  sm:text-xs">
+                  20 September 2021
+                </span>
               </div>
               <div className="flex flex-col bg-white z-10 mr- 16">
                 <img
                   className="h-72 w-72 object-cover mb-2"
                   src="/assets/nhood/about-us.svg"
                 />
-                <span className="font-bold leading-5 sm:text-sm">Minute Full Body Stretch Enim</span>
-                <span className="text-sm opacity-70  sm:text-xs">20 September 2021</span>
+                <span className="font-bold leading-5 sm:text-sm">
+                  Minute Full Body Stretch Enim
+                </span>
+                <span className="text-sm opacity-70  sm:text-xs">
+                  20 September 2021
+                </span>
               </div>
             </div>
           </section>
@@ -297,85 +370,89 @@ export default function Nhood() {
             <h2 className="text-3xl font-bold uppercase leading-8 mb-8">
               Pricing
             </h2>
-            <span className="w-2/5 text-center text-gray-700 leading-5 mb-16">
+            <span className="w-2/5 text-center text-gray-700 leading-5 mb-16 sm:w-8/10">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
               quis convallis ligula. Quisque malesuada enim at neque finibus
               sollicitudin.
             </span>
-            <div className="w-7/10 grid grid-cols-4 gap-x-4">
-              <div className="flex flex-col items-center py-6 rounded-md border-1 border-gray-100">
+            <div className="w-7/10 flex flex-wrap justify-between sm:w-9/10">
+              <div className="flex flex-col items-center py-6 rounded-md w-1/3.3 sm:w-2.5/7 sm:mb-8 border-1 border-gray-100">
                 <span className="text-sm font-bold mb-6">Daily</span>
                 <div className="flex mb-10">
                   <span className="text-xs font-bold">NGN</span>
-                  <span className="text-2xl font-bold">1000</span>
+                  <span className="text-2xl font-bold sm:text-lg">1000</span>
                 </div>
-                <div className="flex flex-col items-center opacity-80 text-sm mb-10">
+                <div className="flex flex-col items-center opacity-80 text-sm mb-10 sm:text-xs">
                   <span className="mb-2">1 Day a Week</span>
                   <span className="mb-2">GYM Access &amp; Equipment </span>
                   <span className="mb-2">Personal Trainer </span>
                   <span className="">Get Suplement</span>
                 </div>
-                <button className="uppercase text-sm bg-custom-106 text-white rounded-full px-8 py-3">
+                <button className="uppercase text-sm bg-custom-106 text-white rounded-full px-8 py-3 sm:text-xs">
                   Join Now
                 </button>
               </div>
-              <div className="flex flex-col items-center py-6 rounded-md border-1 border-custom-106">
+              <div className="flex flex-col items-center py-6 rounded-md w-1/3.3 sm:w-2.5/7 sm:mb-8 border-1 border-custom-106">
                 <span className="text-sm font-bold mb-6">Weekly</span>
                 <div className="flex mb-10">
                   <span className="text-xs font-bold">NGN</span>
-                  <span className="text-2xl font-bold">4000</span>
+                  <span className="text-2xl font-bold sm:text-lg">4000</span>
                 </div>
-                <div className="flex flex-col items-center opacity-80 text-sm mb-10">
+                <div className="flex flex-col items-center opacity-80 text-sm mb-10 sm:text-xs">
                   <span className="mb-2">7 Day a Week</span>
                   <span className="mb-2">GYM Access &amp; Equipment </span>
                   <span className="mb-2">Personal Trainer </span>
                   <span className="">Get Suplement</span>
                 </div>
-                <button className="uppercase text-sm bg-custom-106 text-white rounded-full px-8 py-3">
+                <button className="uppercase text-sm bg-custom-106 text-white rounded-full px-8 py-3 sm:text-xs">
                   Join Now
                 </button>
               </div>
-              <div className="flex flex-col items-center py-6 rounded-md border-1 border-gray-100">
-                <span className="text-sm font-bold mb-6">Montly/Premium</span>
+              <div className="flex flex-col items-center py-6 rounded-md w-1/3.3 sm:w-2.5/7 border-1 border-gray-100">
+                <span className="text-sm font-bold mb-6">Monthly/Premium</span>
                 <div className="flex mb-10">
                   <span className="text-xs font-bold">NGN</span>
-                  <span className="text-2xl font-bold">8000</span>
+                  <span className="text-2xl font-bold sm:text-lg">8000</span>
                 </div>
-                <div className="flex flex-col items-center opacity-80 text-sm mb-10">
+                <div className="flex flex-col items-center opacity-80 text-sm mb-10 sm:text-xs">
                   <span className="mb-2">31 Day a Week</span>
                   <span className="mb-2">GYM Access &amp; Equipment </span>
                   <span className="mb-2">Personal Trainer </span>
                   <span className="">Get Suplement</span>
                 </div>
-                <button className="uppercase text-sm bg-custom-106 text-white rounded-full px-8 py-3">
+                <button className="uppercase text-sm bg-custom-106 text-white rounded-full px-8 py-3 sm:text-xs">
                   Join Now
                 </button>
               </div>
-              <div className="flex flex-col items-center py-6 rounded-md border-1 border-gray-100">
-                <span className="text-sm font-bold mb-6">Montly/Exclusive</span>
+              <div className="flex flex-col items-center py-6 rounded-md w-1/3.3 sm:w-2.5/7 border-1 border-gray-100">
+                <span className="text-sm font-bold mb-6">
+                  Monthly/Exclusive
+                </span>
                 <div className="flex mb-10">
                   <span className="text-xs font-bold">NGN</span>
-                  <span className="text-2xl font-bold">12000/Month</span>
+                  <span className="text-2xl font-bold sm:text-lg">
+                    12000/Month
+                  </span>
                 </div>
-                <div className="flex flex-col items-center opacity-80 text-sm mb-10">
+                <div className="flex flex-col items-center opacity-80 text-sm mb-10 sm:text-xs">
                   <span className="mb-2">On order</span>
                   <span className="mb-2">GYM Access &amp; Equipment </span>
                   <span className="mb-2">Personal Trainer </span>
                   <span className="">Get Suplement</span>
                 </div>
-                <button className="uppercase text-sm bg-custom-106 text-white rounded-full px-8 py-3">
+                <button className="uppercase text-sm bg-custom-106 text-white rounded-full px-8 py-3 sm:text-xs">
                   Join Now
                 </button>
               </div>
             </div>
           </section>
-          <section className="h-100 flex">
-            <div className="w-1/2 bg-black flex items-center justify-center">
-              <div className="flex flex-col w-1/2">
+          <section className="flex flex-wrap">
+            <div className="w-1/2 h-100 bg-black flex items-center justify-center sm:w-full">
+              <div className="flex flex-col w-1/2 sm:w-9/10">
                 <span className="text-white text-sm mb-6">
                   Join over 15,000+ to use RiilfitApp App
                 </span>
-                <h2 className="text-custom-106 text-3xl font-bold mb-4">
+                <h2 className="text-custom-106 text-3xl font-bold mb-4 leading-8">
                   Download Riilfiit <br /> today to get started
                 </h2>
                 <span className="text-white opacity-80 mb-6">
@@ -405,16 +482,16 @@ export default function Nhood() {
                 </div>
               </div>
             </div>
-            <div className="w-1/2 bg-custom-107 flex items-center justify-center">
+            <div className="w-1/2 h-100 bg-custom-107 flex items-center justify-center sm:w-full">
               <img
                 className="w-full h-full object-contain"
                 src="/assets/nhood/services/app_screenshot.png"
               />
             </div>
           </section>
-          <section className="flex justify-center py-48">
-            <div className="flex w-4/6">
-              <div className="w-1/2 flex flex-wrap">
+          <section className="flex justify-center py-48 sm:py-24">
+            <div className="flex flex-wrap w-4/6 sm:w-9/10">
+              <div className="w-1/2 flex flex-wrap sm:w-full">
                 <img
                   className="h-48 w-1/2 object-cover"
                   src="/assets/nhood/services/services5.jpg"
@@ -433,33 +510,33 @@ export default function Nhood() {
                 />
               </div>
               <img
-                className="h-96 w-1/2 object-cover"
+                className="h-96 w-1/2 object-cover sm:w-full"
                 src="/assets/nhood/about-us.svg"
               />
             </div>
           </section>
           <section className="flex flex-col justify-center items-center py-24 bg-custom-107">
-            <div className="w-1/2 text-center mb-16">
+            <div className="w-1/2 text-center mb-16 sm:w-8/10">
               “Etiam maximus, justo ut pellentesque egestas, erat sapien mollis
               massa, nec porta nisl quam eu arcu. Donec sit amet congue lectus.
               Quisque molestie consectetur efficitur. Nullam egestas, tellus
               vitae suscipit elementum.”
             </div>
-            <div className="flex items-center mb-10">
+            <div className="flex flex-wrap justify-center items-center mb-10 px-2">
               <img
-                className="h-12 w-12 rounded-full object-cover mr-12"
+                className="h-12 w-12 rounded-full object-cover mr-12 sm:mr-4"
                 src="https://images.unsplash.com/photo-1582328555849-f56e78425d1d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=393&q=80"
               />
               <img
-                className="h-12 w-12 rounded-full object-cover mr-12"
+                className="h-12 w-12 rounded-full object-cover mr-12 sm:mr-4"
                 src="https://images.unsplash.com/photo-1546456073-ea246a7bd25f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmxhY2slMjBwZXJzb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
               />
               <img
-                className="h-16 w-16 rounded-full object-cover mr-12"
+                className="h-16 w-16 rounded-full object-cover mr-12 sm:mr-4"
                 src="https://images.unsplash.com/photo-1507152832244-10d45c7eda57?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80"
               />
               <img
-                className="h-12 w-12 rounded-full object-cover mr-12"
+                className="h-12 w-12 rounded-full object-cover mr-12 sm:mr-4"
                 src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
               />
               <img
@@ -476,7 +553,7 @@ export default function Nhood() {
             className="flex flex-col items-center justify-center bg-contact h-144 w-full"
             id="contact"
           >
-            <form className="h-8/10 w-1/2 bg-white shadow-md rounded-md flex flex-col items-center justify-center py-10">
+            <form className="h-8/10 w-1/2 bg-white shadow-md rounded-md flex flex-col items-center justify-center py-10 sm:w-9/10">
               <h2 className="text-3xl font-bold uppercase leading-8 mb-4">
                 Contact
               </h2>
@@ -504,8 +581,8 @@ export default function Nhood() {
               </button>
             </form>
           </section>
-          <footer className="bg-black flex justify-center py-20 px-48">
-            <div className="flex flex-col w-3/10 mr-16">
+          <footer className="bg-black flex flex-wrap justify-center py-20 px-48 sm:py-16 sm:px-8">
+            <div className="flex flex-col w-3/10 mr-16 sm:w-full sm:mb-12">
               <span className="text-white font-bold text-sm mb-4">
                 Get In Touch
               </span>
@@ -521,7 +598,7 @@ export default function Nhood() {
                 <span className="text-white opacity-40">+2349022169861</span>
               </div>
             </div>
-            <div className="flex flex-col w-1/5 mr-16">
+            <div className="flex flex-col w-1/5 mr-16 sm:w-full sm:mb-12">
               <span className="text-white font-bold text-sm mb-4">
                 Follow Us
               </span>
@@ -532,7 +609,7 @@ export default function Nhood() {
                 <FaYoutube className="h-8 w-8 px-2 py-2 items-center justify-center border-1 border-gray-900 rounded-full text-custom-108" />
               </div>
             </div>
-            <div className="flex flex-col w-3/10">
+            <div className="flex flex-col w-3/10 sm:w-full">
               <span className="text-white font-bold text-sm mb-4">
                 Newsletter
               </span>
