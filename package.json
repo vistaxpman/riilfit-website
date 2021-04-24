@@ -21,6 +21,7 @@
     "react-icons": "^4.2.0",
     "react-paystack": "^3.0.3",
     "react-slideshow-image": "^3.4.3",
+    "shortid": "^2.2.16",
     "styled-components": "^5.2.1"
   },
   "devDependencies": {

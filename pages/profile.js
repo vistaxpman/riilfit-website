@@ -9,6 +9,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { combineData } from "../utils";
 import { getClient } from "../services/ClientServices";
+import NhoodHeader from "./components/NhoodHeader";
+import NhoodFooter from "./components/NhoodFooter";
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -78,7 +80,7 @@ export default function Profile() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Wrapper className="sleek-scrollbar">
-        <Header gyms={data?.gyms} />
+        <NhoodHeader />
         <div className="home-wrapper">
           {data?.isLoading ? (
             <section className="flex justify-between px-16 py-40 flex flex-col items-center justify-center">
@@ -115,8 +117,8 @@ export default function Profile() {
               </div>
             </section>
           )}
-          <Footer />
         </div>
+        <NhoodFooter />
       </Wrapper>
     </div>
   );

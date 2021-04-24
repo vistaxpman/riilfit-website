@@ -9,50 +9,107 @@ import {
 } from "react-icons/ai";
 import { IoLogoGooglePlaystore } from "react-icons/io5";
 import { MdFavoriteBorder } from "react-icons/md";
-import { TiLocation } from "react-icons/ti";
-import {
-  FaPhoneAlt,
-  FaFacebookF,
-  FaTwitter,
-  FaInstagram,
-  FaYoutube,
-} from "react-icons/fa";
-import { RiMenu3Fill } from "react-icons/ri";
 import { IoMdClose } from "react-icons/io";
-import AccountCircleIcon from "mdi-react/AccountCircleIcon";
 import { useCookies } from "react-cookie";
+import shortid from "shortid";
 import styled from "styled-components";
+import { usePaystackPayment } from "react-paystack";
 import { combineData } from "../utils";
 import Auth from "./components/Auth";
+import { getSelectedGym } from "../services/GymServices";
+import NhoodHeader from "./components/NhoodHeader";
+import NhoodFooter from "./components/NhoodFooter";
+
+const { publicRuntimeConfig } = getConfig();
 
 export default function Nhood() {
   const router = useRouter();
   const [data, setData] = useState({
     isMobileMenuVisible: false,
     isAuthVisible: false,
+    selectedPlan: null,
   });
   const [cookies, setCookie, removeCookie] = useCookies() || {};
 
-  const handleNavigateToRoute = (route) => {
-    router.push(route);
-  };
+  useEffect(() => {
+    if (!router.isReady) return;
+    handleFetchSelectedGym();
+  }, [router.isReady]);
 
   const handleAuthModalVisibility = (isAuthVisible) => {
     setData(combineData(data, { isAuthVisible }));
-  };
-
-  const handleLogout = () => {
-    removeCookie("user", {
-      path: "/",
-      sameSite: true,
-    });
-    router.replace("/");
   };
 
   const toggleMobileMenuVisibility = () => {
     let { isMobileMenuVisible } = data;
     isMobileMenuVisible = !isMobileMenuVisible;
     setData((data) => combineData(data, { isMobileMenuVisible }));
+  };
+
+  const handleFetchSelectedGym = async () => {
+    // const { tag } = router?.query;
+    await getSelectedGym({ tag: "NHOOD GYM" })
+      .then((response) => {
+        console.log(response);
+        if (response && response?.success) {
+          const { gym, plans, gymBanners } = response?.payload;
+          setData(combineData(data, { isLoading: false, plans }));
+        } else {
+          setData(combineData(data, { isLoading: false }));
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        setData(combineData(data, { isLoading: false }));
+      });
+  };
+
+  const handleSelectPlan = (selectedPlan) => {
+    setData(combineData(data, { selectedPlan }));
+  };
+
+  const checkUserLogin = () => {
+    return cookies && cookies?.user;
+  };
+
+  const onSuccess = (reference) => {
+    console.log(reference);
+  };
+
+  const PaystackButton = () => {
+    const { email } = cookies?.user || {};
+
+    const config = {
+      reference: new Date().getTime(),
+      email,
+      amount: getAmount(),
+      publicKey: publicRuntimeConfig.PAYSTACK_PUBLIC_KEY,
+    };
+
+    const initializePayment = usePaystackPayment(config);
+
+    return (
+      <div className="flex justify-center">
+        <button
+          className="uppercase text-sm bg-custom-106 text-white rounded-full px-8 py-3 sm:text-xs"
+          onClick={() => {
+            if (checkUserLogin()) {
+              initializePayment(onSuccess);
+            } else {
+              setData(combineData(data, { isAuthVisible: true }));
+            }
+          }}
+        >
+          Subscribe
+        </button>
+      </div>
+    );
+  };
+
+  const getAmount = () => {
+    let num = data?.selectedPlan?.price || 0;
+    num = num * 100;
+    return num;
   };
 
   return (
@@ -62,60 +119,9 @@ export default function Nhood() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Wrapper className="sleek-scrollbar">
-        <header className="h-20 bg-black fixed top-0 w-full flex items-center z-20">
-          <img
-            className="mx-auto w-16 h-16 object-contain sm:ml-4 sm:mr-0 sm:w-12 sm:h-12 cursor-pointer"
-            src="/assets/homepage/nhood-logo.svg"
-            onClick={() => handleNavigateToRoute("/nhood")}
-          />
-          <nav className="ml-auto mr-12 sm:hidden">
-            <ul className="flex items-center text-sm">
-              <li
-                className="text-white ml-10 cursor-pointer"
-                onClick={() => handleNavigateToRoute("/nhood")}
-              >
-                Home
-              </li>
-              <li className="text-white ml-10">
-                <a href="#services">Services</a>
-              </li>
-              <li className="text-white ml-10">
-                <a href="#pricing">Make a Booking</a>
-              </li>
-              <li className="text-white ml-10">
-                <a href="#contact">Contact</a>
-              </li>
-
-              {cookies && cookies?.user ? (
-                <li
-                  className="login ml-24 md:ml-2 cursor-pointer"
-                  onClick={() => handleNavigateToRoute("/profile")}
-                >
-                  <AccountCircleIcon />
-                </li>
-              ) : (
-                <li
-                  className="border-1 border-custom-104 text-custom-104 px-6 py-1 rounded-sm ml-10 cursor-pointer"
-                  onClick={() => handleAuthModalVisibility(true)}
-                >
-                  Login
-                </li>
-              )}
-              {cookies && cookies?.user ? (
-                <li
-                  className="hover:bg-opacity-80 bg-red-600 px-2 py-1 rounded-sm ml-4 cursor-pointer text-white"
-                  onClick={() => handleLogout()}
-                >
-                  Logout
-                </li>
-              ) : null}
-            </ul>
-          </nav>
-          <RiMenu3Fill
-            className="hidden text-white h-8 w-8 ml-auto mr-4 sm:flex"
-            onClick={() => toggleMobileMenuVisibility()}
-          />
-        </header>
+        <NhoodHeader
+          toggleMobileMenuVisibility={() => toggleMobileMenuVisibility()}
+        />
         {data?.isMobileMenuVisible ? (
           <section className="fixed top-0 h-full w-full flex z-100">
             <nav className="w-7/10 bg-black p-8">
@@ -421,74 +427,48 @@ export default function Nhood() {
               sollicitudin.
             </span>
             <div className="w-7/10 flex flex-wrap justify-between sm:w-9/10">
-              <div className="flex flex-col items-center py-6 rounded-md w-1/3.3 sm:w-2.5/7 sm:mb-8 border-1 border-gray-100">
-                <span className="text-sm font-bold mb-6">Daily</span>
-                <div className="flex mb-10">
-                  <span className="text-xs font-bold">NGN</span>
-                  <span className="text-2xl font-bold sm:text-lg">1000</span>
-                </div>
-                <div className="flex flex-col items-center opacity-80 text-sm mb-10 sm:text-xs">
-                  <span className="mb-2">1 Day a Week</span>
-                  <span className="mb-2">GYM Access &amp; Equipment </span>
-                  <span className="mb-2">Personal Trainer </span>
-                  <span className="">Get Suplement</span>
-                </div>
-                <button className="uppercase text-sm bg-custom-106 text-white rounded-full px-8 py-3 sm:text-xs">
-                  Join Now
-                </button>
-              </div>
-              <div className="flex flex-col items-center py-6 rounded-md w-1/3.3 sm:w-2.5/7 sm:mb-8 border-1 border-custom-106">
-                <span className="text-sm font-bold mb-6">Weekly</span>
-                <div className="flex mb-10">
-                  <span className="text-xs font-bold">NGN</span>
-                  <span className="text-2xl font-bold sm:text-lg">4000</span>
-                </div>
-                <div className="flex flex-col items-center opacity-80 text-sm mb-10 sm:text-xs">
-                  <span className="mb-2">7 Day a Week</span>
-                  <span className="mb-2">GYM Access &amp; Equipment </span>
-                  <span className="mb-2">Personal Trainer </span>
-                  <span className="">Get Suplement</span>
-                </div>
-                <button className="uppercase text-sm bg-custom-106 text-white rounded-full px-8 py-3 sm:text-xs">
-                  Join Now
-                </button>
-              </div>
-              <div className="flex flex-col items-center py-6 rounded-md w-1/3.3 sm:w-2.5/7 border-1 border-gray-100">
-                <span className="text-sm font-bold mb-6">Monthly/Premium</span>
-                <div className="flex mb-10">
-                  <span className="text-xs font-bold">NGN</span>
-                  <span className="text-2xl font-bold sm:text-lg">8000</span>
-                </div>
-                <div className="flex flex-col items-center opacity-80 text-sm mb-10 sm:text-xs">
-                  <span className="mb-2">31 Day a Week</span>
-                  <span className="mb-2">GYM Access &amp; Equipment </span>
-                  <span className="mb-2">Personal Trainer </span>
-                  <span className="">Get Suplement</span>
-                </div>
-                <button className="uppercase text-sm bg-custom-106 text-white rounded-full px-8 py-3 sm:text-xs">
-                  Join Now
-                </button>
-              </div>
-              <div className="flex flex-col items-center py-6 rounded-md w-1/3.3 sm:w-2.5/7 border-1 border-gray-100">
-                <span className="text-sm font-bold mb-6">
-                  Monthly/Exclusive
-                </span>
-                <div className="flex mb-10">
-                  <span className="text-xs font-bold">NGN</span>
-                  <span className="text-2xl font-bold sm:text-lg">
-                    12000/Month
+              {data?.plans?.map((plan) => (
+                <div
+                  onClick={() => handleSelectPlan(plan)}
+                  key={shortid.generate()}
+                  className={`flex flex-col items-center py-6 rounded-md w-1/3.3 sm:w-2.5/7 sm:mb-8 cursor-pointer ${
+                    data?.selectedPlan?.id === plan?.id
+                      ? "border-1 border-custom-104"
+                      : "border-1 border-gray-100"
+                  }`}
+                >
+                  <span className="text-sm font-bold mb-6">
+                    {plan?.duration}
                   </span>
+                  <div className="flex mb-10">
+                    <span className="text-xs font-bold">NGN</span>
+                    <span className="text-2xl font-bold sm:text-lg">
+                      {plan?.price}
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center opacity-80 text-sm mb-10 sm:text-xs">
+                    <span className="mb-2">GYM Access &amp; Equipment</span>
+                    <span
+                      className={`mb-2 ${
+                        plan?.duration === "Daily" && "opacity-20"
+                      }`}
+                    >
+                      Personal Trainer
+                    </span>
+                    <span
+                      className={`${
+                        plan?.duration === "Daily" ||
+                        plan?.duration === "Weekly"
+                          ? "opacity-20"
+                          : null
+                      }`}
+                    >
+                      Get Supplements
+                    </span>
+                  </div>
+                  <PaystackButton />
                 </div>
-                <div className="flex flex-col items-center opacity-80 text-sm mb-10 sm:text-xs">
-                  <span className="mb-2">On order</span>
-                  <span className="mb-2">GYM Access &amp; Equipment </span>
-                  <span className="mb-2">Personal Trainer </span>
-                  <span className="">Get Suplement</span>
-                </div>
-                <button className="uppercase text-sm bg-custom-106 text-white rounded-full px-8 py-3 sm:text-xs">
-                  Join Now
-                </button>
-              </div>
+              ))}
             </div>
           </section>
           <section className="flex flex-wrap">
@@ -626,51 +606,7 @@ export default function Nhood() {
               </button>
             </form>
           </section>
-          <footer className="bg-black flex flex-wrap justify-center py-20 px-48 sm:py-16 sm:px-8">
-            <div className="flex flex-col w-3/10 mr-16 sm:w-full sm:mb-12">
-              <span className="text-white font-bold text-sm mb-4">
-                Get In Touch
-              </span>
-              <div className="flex items-start mb-4">
-                <TiLocation className="h-12 w-12 mr-2 text-custom-106" />
-                <span className="text-white opacity-40">
-                  2 Alhaji Estate, Water Gate Hotel Opposite Obio Akpo LGA
-                  Council HQ Obio Akpo
-                </span>
-              </div>
-              <div className="flex items-center">
-                <FaPhoneAlt className="h-4 w-4 mr-2 text-custom-106" />
-                <span className="text-white opacity-40">+2349022169861</span>
-              </div>
-            </div>
-            <div className="flex flex-col w-1/5 mr-16 sm:w-full sm:mb-12">
-              <span className="text-white font-bold text-sm mb-4">
-                Follow Us
-              </span>
-              <div className="flex items-center">
-                <FaFacebookF className="h-8 w-8 px-2 py-2 items-center justify-center border-1 border-gray-900 rounded-full mr-3 text-custom-108" />
-                <FaTwitter className="h-8 w-8 px-2 py-2 items-center justify-center border-1 border-gray-900 rounded-full mr-3 text-custom-108" />
-                <FaInstagram className="h-8 w-8 px-2 py-2 items-center justify-center border-1 border-gray-900 rounded-full mr-3 text-custom-108" />
-                <FaYoutube className="h-8 w-8 px-2 py-2 items-center justify-center border-1 border-gray-900 rounded-full text-custom-108" />
-              </div>
-            </div>
-            <div className="flex flex-col w-3/10 sm:w-full">
-              <span className="text-white font-bold text-sm mb-4">
-                Newsletter
-              </span>
-              <span className="text-white opacity-40 mb-4">
-                Etiam maximus, justo ut pellentesque egestas, erat sapien mollis
-                massa, nec porta nisl quam eu arcu.
-              </span>
-              <input
-                placeholder="Your Email"
-                className="h-10 text-sm rounded-md mb-4 px-2 bg-gray-700 bg-opacity-20 border-1 border-gray-900 border-opacity-70 text-gray-500"
-              />
-              <button className="bg-custom-106 text-white h-10 w-24 items-center justify-center rounded-full">
-                Send
-              </button>
-            </div>
-          </footer>
+          <NhoodFooter />
         </div>
 
         {data?.isAuthVisible ? (
