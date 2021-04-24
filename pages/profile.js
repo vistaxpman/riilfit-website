@@ -3,6 +3,7 @@ import Head from "next/head";
 import getConfig from "next/config";
 import styled from "styled-components";
 import { useCookies } from "react-cookie";
+import QRCode from "qrcode";
 import AccountCircleIcon from "mdi-react/AccountCircleIcon";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -20,9 +21,9 @@ export default function Profile() {
     isLoading: true,
     id,
     email,
+    client: null,
+    qrCode: "",
   });
-
-  //   console.log(cookies?.user);
 
   useEffect(() => {
     handleFetchGyms();
@@ -50,10 +51,16 @@ export default function Profile() {
 
   const handleFetchClient = async () => {
     await getClient({ id, email })
-      .then((response) => {
+      .then(async (response) => {
+        console.log(response);
         if (response && response?.success) {
-          const payload = response?.payload;
-          setData(combineData(data, { isLoading: false, payload }));
+          let { client } = response?.payload;
+          const { email } = client || {};
+          let qrCode;
+          if (email) {
+            qrCode = await QRCode.toDataURL("email");
+          }
+          setData(combineData(data, { isLoading: false, client, qrCode }));
         } else {
           setData(combineData(data, { isLoading: false }));
         }
@@ -77,20 +84,34 @@ export default function Profile() {
             <section className="flex justify-between px-16 py-40 flex flex-col items-center justify-center">
               <h2 className="text-3xl font-extrabold">Please wait...</h2>
             </section>
-          ) : !data?.isLoading && !data?.payload ? (
+          ) : !data?.isLoading && !data?.client ? (
             <section className="flex justify-between px-16 py-40 flex flex-col items-center justify-center">
               <h2 className="text-3xl font-extrabold">
                 Sorry! We couldn't find this profile.
               </h2>
             </section>
           ) : (
-            <section className="flex justify-between px-16 py-40">
-              <div className="w-3/10 shadow-md py-8 px-8 flex flex-col items-center">
+            <section className="flex px-16 py-40">
+              <div className="w-3/10 shadow-md py-8 px-8 flex flex-col items-center mr-24">
                 <AccountCircleIcon className="h-24 w-24 text-gray-800" />
-                <span className="font-medium text-lg">{data?.payload?.client?.name}</span>
-                <span className="font-medium">{data?.payload?.client?.email}</span>
-                <span className="font-medium">{data?.payload?.client?.phonenumber}</span>
-                <span>{data?.payload?.client?.address}</span>
+                <span className="font-medium text-lg">
+                  {data?.client?.name}
+                </span>
+                <span className="font-medium opacity-70">
+                  {data?.client?.email}
+                </span>
+                <span className="font-medium opacity-70">
+                  {data?.client?.phonenumber}
+                </span>
+                <span className="font-medium opacity-70">
+                  {data?.client?.address}
+                </span>
+              </div>
+              <div className="flex flex-col items-center">
+                <span className="font-bold text-md mb-4">QR Code:</span>
+                <div>
+                  <img src={data?.qrCode} className="h-64 w-64" />
+                </div>
               </div>
             </section>
           )}

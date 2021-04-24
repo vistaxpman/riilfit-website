@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import Head from "next/head";
 import getConfig from "next/config";
 import {
@@ -18,13 +19,35 @@ import {
 } from "react-icons/fa";
 import { RiMenu3Fill } from "react-icons/ri";
 import { IoMdClose } from "react-icons/io";
+import AccountCircleIcon from "mdi-react/AccountCircleIcon";
+import { useCookies } from "react-cookie";
 import styled from "styled-components";
 import { combineData } from "../utils";
+import Auth from "./components/Auth";
 
 export default function Nhood() {
+  const router = useRouter();
   const [data, setData] = useState({
     isMobileMenuVisible: false,
+    isAuthVisible: false,
   });
+  const [cookies, setCookie, removeCookie] = useCookies() || {};
+
+  const handleNavigateToRoute = (route) => {
+    router.push(route);
+  };
+
+  const handleAuthModalVisibility = (isAuthVisible) => {
+    setData(combineData(data, { isAuthVisible }));
+  };
+
+  const handleLogout = () => {
+    removeCookie("user", {
+      path: "/",
+      sameSite: true,
+    });
+    router.replace("/");
+  };
 
   const toggleMobileMenuVisibility = () => {
     let { isMobileMenuVisible } = data;
@@ -41,12 +64,18 @@ export default function Nhood() {
       <Wrapper className="sleek-scrollbar">
         <header className="h-20 bg-black fixed top-0 w-full flex items-center z-20">
           <img
-            className="mx-auto w-16 h-16 object-contain sm:ml-4 sm:mr-0 sm:w-12 sm:h-12"
+            className="mx-auto w-16 h-16 object-contain sm:ml-4 sm:mr-0 sm:w-12 sm:h-12 cursor-pointer"
             src="/assets/homepage/nhood-logo.svg"
+            onClick={() => handleNavigateToRoute("/nhood")}
           />
           <nav className="ml-auto mr-12 sm:hidden">
             <ul className="flex items-center text-sm">
-              <li className="text-white ml-10">Home</li>
+              <li
+                className="text-white ml-10 cursor-pointer"
+                onClick={() => handleNavigateToRoute("/nhood")}
+              >
+                Home
+              </li>
               <li className="text-white ml-10">
                 <a href="#services">Services</a>
               </li>
@@ -56,9 +85,30 @@ export default function Nhood() {
               <li className="text-white ml-10">
                 <a href="#contact">Contact</a>
               </li>
-              <li className="border-1 border-custom-104 text-custom-104 px-6 py-1 rounded-sm ml-10">
-                Login
-              </li>
+
+              {cookies && cookies?.user ? (
+                <li
+                  className="login ml-24 md:ml-2 cursor-pointer"
+                  onClick={() => handleNavigateToRoute("/profile")}
+                >
+                  <AccountCircleIcon />
+                </li>
+              ) : (
+                <li
+                  className="border-1 border-custom-104 text-custom-104 px-6 py-1 rounded-sm ml-10 cursor-pointer"
+                  onClick={() => handleAuthModalVisibility(true)}
+                >
+                  Login
+                </li>
+              )}
+              {cookies && cookies?.user ? (
+                <li
+                  className="hover:bg-opacity-80 bg-red-600 px-2 py-1 rounded-sm ml-4 cursor-pointer text-white"
+                  onClick={() => handleLogout()}
+                >
+                  Logout
+                </li>
+              ) : null}
             </ul>
           </nav>
           <RiMenu3Fill
@@ -101,10 +151,8 @@ export default function Nhood() {
                     Contact
                   </a>
                 </li>
-                <li className="border-1 border-custom-104 text-custom-104 px-6 py-1 rounded-sm">
-                  <span>
-                    Login
-                  </span>
+                <li className="border-1 border-custom-104 text-custom-104 px-6 py-1 rounded-sm cursor-pointer">
+                  <span>Login</span>
                 </li>
               </ul>
             </nav>
@@ -115,7 +163,7 @@ export default function Nhood() {
           </section>
         ) : null}
         <div className="pt-20">
-          <section className="relative w-full h-128">
+          <section className="relative w-full h-128" id="home">
             <img
               className="mx-auto w-full h-full object-cover"
               src="/assets/homepage/banner-image.jpg"
@@ -192,9 +240,6 @@ export default function Nhood() {
                   the next level with bespoke cooperative service, design and
                   fit out to ensure your gym
                 </span>
-                <button className="text-white bg-custom-106 w-40 rounded-full py-3">
-                  Read More
-                </button>
               </div>
               <div className="w-1/2 flex justify-center sm:w-full sm:mt-32">
                 <div className="flex relative">
@@ -215,7 +260,7 @@ export default function Nhood() {
               Our services covers a wide range of gym &amp; spa activites which
               includes pool, party, children gym and dancing.
             </span>
-            <div className="flex flex-wrap w-4/5 mx-auto sm:w-9/10">
+            <div className="flex flex-wrap w-4/5 mx-auto sm:w-9.5/10">
               <div className="w-1/3 h-64 relative sm:w-1/2">
                 <img
                   className="w-full h-64 object-cover"
@@ -627,6 +672,10 @@ export default function Nhood() {
             </div>
           </footer>
         </div>
+
+        {data?.isAuthVisible ? (
+          <Auth onCloseAuthModal={() => handleAuthModalVisibility(false)} />
+        ) : null}
       </Wrapper>
     </div>
   );

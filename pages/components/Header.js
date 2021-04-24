@@ -15,7 +15,7 @@ export default function Header({ gyms, isAuthVisible }) {
     isAuthVisible,
     isRequesting: false,
     isMobileMenuVisible: false,
-    isShowingGyms: false,
+    isShowingGyms: true,
   });
   const [cookies, setCookie, removeCookie] = useCookies() || {};
 
@@ -42,9 +42,7 @@ export default function Header({ gyms, isAuthVisible }) {
   const toggleMobileMenuVisibility = () => {
     let { isMobileMenuVisible } = data;
     isMobileMenuVisible = !isMobileMenuVisible;
-    setData((data) =>
-      combineData(data, { isMobileMenuVisible, isShowingGyms: false })
-    );
+    setData(combineData(data, { isMobileMenuVisible }));
   };
 
   const toggleShowingGymsVisibility = () => {
@@ -113,7 +111,7 @@ export default function Header({ gyms, isAuthVisible }) {
                   </li>
                 ))} */}
                 <li
-                  onClick={() => handleNavigateToRoute(`nhood`)}
+                  onClick={() => handleNavigateToRoute("/nhood")}
                   title="Nhood"
                   className="text-white text-sm h-8 flex items-center capitalize px-2 whitespace-nowrap overflow-ellipsis overflow-hidden text-center text-white hover:bg-opacity-80"
                 >
@@ -129,15 +127,17 @@ export default function Header({ gyms, isAuthVisible }) {
             <a>Dreambodi</a>
           </li>
           {cookies && cookies?.user ? (
-            <li
-              className="login ml-24 md:ml-2"
-              onClick={() => handleNavigateToRoute("/profile")}
-            >
-              <AccountCircleIcon />
-            </li>
+            router?.pathname !== "/profile" ? (
+              <li
+                className="login ml-24 md:ml-2"
+                onClick={() => handleNavigateToRoute("/profile")}
+              >
+                <AccountCircleIcon />
+              </li>
+            ) : null
           ) : (
             <li
-              className="login ml-24 md:ml-2"
+              className="login ml-24 md:ml-2 cursor-pointer"
               onClick={() => handleAuthModalVisibility(true)}
             >
               <span>Login</span>
@@ -154,7 +154,7 @@ export default function Header({ gyms, isAuthVisible }) {
         </ul>
 
         <MenuIcon
-          className="text-white mr-4 hidden sm:block"
+          className="text-white h-8 w-8 mr-4 hidden sm:block"
           onClick={() => toggleMobileMenuVisibility()}
         />
 
@@ -166,11 +166,11 @@ export default function Header({ gyms, isAuthVisible }) {
       {data?.isMobileMenuVisible ? (
         <div className="mr-4 fixed z-20 top-0 left-0 w-screen h-screen bg-gray-200 flex flex-col px-4 py-4">
           <CloseIcon
-            className="ml-auto mb-4"
+            className="ml-auto mb-16"
             onClick={() => toggleMobileMenuVisibility()}
           />
-          <ul>
-            <li className="mb-2">
+          <ul className="flex flex-col items-center">
+            <li className="mb-8">
               <a
                 href="/"
                 className={router?.pathname === "/" ? "text-custom-104" : null}
@@ -179,7 +179,7 @@ export default function Header({ gyms, isAuthVisible }) {
               </a>
             </li>
             <li
-              className="mb-2"
+              className="mb-8"
               onClick={() => handleNavigateToRoute("/about-riilfit")}
             >
               <a
@@ -193,7 +193,7 @@ export default function Header({ gyms, isAuthVisible }) {
               </a>
             </li>
             <li
-              className="mb-2"
+              className="mb-8"
               onClick={() => handleNavigateToRoute("/contact-us")}
             >
               <a
@@ -204,7 +204,7 @@ export default function Header({ gyms, isAuthVisible }) {
                 Contact Us
               </a>
             </li>
-            <li className="flex flex-col mb-2">
+            <li className="flex flex-col items-center mb-8">
               <div
                 className="flex mb-1"
                 onClick={() => toggleShowingGymsVisibility()}
@@ -220,7 +220,7 @@ export default function Header({ gyms, isAuthVisible }) {
               </div>
               {data?.isShowingGyms ? (
                 <ul className="w-28 flex flex-col bg-custom-104">
-                  {gyms?.map((gym, index) => (
+                  {/* {gyms?.map((gym, index) => (
                     <li
                       key={index}
                       onClick={() => handleNavigateToRoute(`gym/${gym?.tag}`)}
@@ -229,7 +229,14 @@ export default function Header({ gyms, isAuthVisible }) {
                     >
                       {gym?.tag}
                     </li>
-                  ))}
+                  ))} */}
+                  <li
+                    onClick={() => handleNavigateToRoute(`nhood`)}
+                    title="Nhood"
+                    className="text-white text-sm h-8 flex items-center capitalize px-2 whitespace-nowrap overflow-ellipsis overflow-hidden text-center text-white hover:bg-opacity-80"
+                  >
+                    Nhood
+                  </li>
                 </ul>
               ) : null}
             </li>

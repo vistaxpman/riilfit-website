@@ -97,7 +97,7 @@ const Wrapper = styled.div`
     font-style: normal;
     font-weight: bold;
     font-size: 50px;
-    line-height: 110px;
+    line-height: 50px;
     color: #fff;
   }
 
