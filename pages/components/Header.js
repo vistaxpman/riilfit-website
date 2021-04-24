@@ -126,7 +126,7 @@ export default function Header({ gyms, isAuthVisible }) {
           >
             <a>Dreambodi</a>
           </li>
-          {cookies && cookies?.user ? (
+          {/* {cookies && cookies?.user ? (
             router?.pathname !== "/profile" ? (
               <li
                 className="login ml-24 md:ml-2"
@@ -150,7 +150,7 @@ export default function Header({ gyms, isAuthVisible }) {
             >
               Logout
             </li>
-          ) : null}
+          ) : null} */}
         </ul>
 
         <MenuIcon

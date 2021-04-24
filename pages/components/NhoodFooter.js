@@ -14,7 +14,7 @@ export default function NhoodFooter() {
       <div className="flex flex-col w-3/10 mr-16 sm:w-full sm:mb-12">
         <span className="text-white font-bold text-sm mb-4">Get In Touch</span>
         <div className="flex items-start mb-4">
-          <TiLocation className="h-12 w-12 mr-2 text-custom-106" />
+          <TiLocation className="h-6 w-6 mr-2 text-custom-106" />
           <span className="text-white opacity-40">
             2 Alhaji Estate, Water Gate Hotel Opposite Obio Akpo LGA Council HQ
             Obio Akpo

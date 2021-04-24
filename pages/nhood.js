@@ -9,7 +9,6 @@ import {
 } from "react-icons/ai";
 import { IoLogoGooglePlaystore } from "react-icons/io5";
 import { MdFavoriteBorder } from "react-icons/md";
-import { IoMdClose } from "react-icons/io";
 import { useCookies } from "react-cookie";
 import shortid from "shortid";
 import styled from "styled-components";
@@ -50,8 +49,7 @@ export default function Nhood() {
     // const { tag } = router?.query;
     await getSelectedGym({ tag: "NHOOD GYM" })
       .then((response) => {
-        console.log(response);
-        if (response && response?.success) {
+       if (response && response?.success) {
           const { gym, plans, gymBanners } = response?.payload;
           setData(combineData(data, { isLoading: false, plans }));
         } else {
@@ -121,8 +119,9 @@ export default function Nhood() {
       <Wrapper className="sleek-scrollbar">
         <NhoodHeader
           toggleMobileMenuVisibility={() => toggleMobileMenuVisibility()}
+          isMobileMenuVisible={data?.isMobileMenuVisible}
         />
-        {data?.isMobileMenuVisible ? (
+        {/* {data?.isMobileMenuVisible ? (
           <section className="fixed top-0 h-full w-full flex z-100">
             <nav className="w-7/10 bg-black p-8">
               <IoMdClose
@@ -167,7 +166,7 @@ export default function Nhood() {
               onClick={() => toggleMobileMenuVisibility()}
             ></div>
           </section>
-        ) : null}
+        ) : null} */}
         <div className="pt-20">
           <section className="relative w-full h-128" id="home">
             <img

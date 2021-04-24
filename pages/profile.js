@@ -19,6 +19,7 @@ export default function Profile() {
   let { id, email } = cookies?.user || {};
 
   const [data, setData] = useState({
+    isMobileMenuVisible: false,
     gyms: [],
     isLoading: true,
     id,
@@ -34,6 +35,12 @@ export default function Profile() {
   useEffect(() => {
     handleFetchClient();
   }, [id, email]);
+
+  const toggleMobileMenuVisibility = () => {
+    let { isMobileMenuVisible } = data;
+    isMobileMenuVisible = !isMobileMenuVisible;
+    setData((data) => combineData(data, { isMobileMenuVisible }));
+  };
 
   const handleFetchGyms = async () => {
     let page_number = 0;
@@ -54,7 +61,6 @@ export default function Profile() {
   const handleFetchClient = async () => {
     await getClient({ id, email })
       .then(async (response) => {
-        console.log(response);
         if (response && response?.success) {
           let { client } = response?.payload;
           const { email } = client || {};
@@ -80,7 +86,10 @@ export default function Profile() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Wrapper className="sleek-scrollbar">
-        <NhoodHeader />
+        <NhoodHeader
+          toggleMobileMenuVisibility={() => toggleMobileMenuVisibility()}
+          isMobileMenuVisible={data?.isMobileMenuVisible}
+        />
         <div className="home-wrapper">
           {data?.isLoading ? (
             <section className="flex justify-between px-16 py-40 flex flex-col items-center justify-center">
@@ -93,8 +102,8 @@ export default function Profile() {
               </h2>
             </section>
           ) : (
-            <section className="flex px-16 py-40">
-              <div className="w-3/10 shadow-md py-8 px-8 flex flex-col items-center mr-24">
+            <section className="flex flex-wrap justify-between px-8 py-40 sm:pt-20 sm:pb-40">
+              <div className="w-3/10 shadow-md h-72 flex flex-col items-center justify-center sm:w-full sm:mb-20">
                 <AccountCircleIcon className="h-24 w-24 text-gray-800" />
                 <span className="font-medium text-lg">
                   {data?.client?.name}
@@ -109,11 +118,39 @@ export default function Profile() {
                   {data?.client?.address}
                 </span>
               </div>
-              <div className="flex flex-col items-center">
+              <div className="w-1/5 flex flex-col items-center sm:w-full sm:mb-20">
                 <span className="font-bold text-md mb-4">QR Code:</span>
                 <div>
                   <img src={data?.qrCode} className="h-64 w-64" />
                 </div>
+              </div>
+              <div className="w-1/3.5 border-1 border-gray-300 rounded-md sm:w-full">
+                <table class="table-fixed w-full">
+                  <thead>
+                    <tr className="h-16 bg-gray-100">
+                      <th class="w-1/5 text-center">Plan</th>
+                      <th class="w-2/5 text-center">Subscribed On</th>
+                      <th class="w-2/5 text-center">Expiry</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-t-1 border-gray-300 h-16">
+                      <td class="w-1/5 text-center">Daily</td>
+                      <td class="w-2/5 text-center">12th April 2021</td>
+                      <td class="w-2/5 text-center">13th April 2021</td>
+                    </tr>
+                    <tr className="border-t-1 border-gray-300 h-16">
+                      <td class="w-1/5 text-center">Weekly</td>
+                      <td class="w-2/5 text-center">14th April 2021</td>
+                      <td class="w-2/5 text-center">21th April 2021</td>
+                    </tr>
+                    <tr className="border-t-1 border-gray-300 h-16">
+                      <td class="w-1/5 text-center">Daily</td>
+                      <td class="w-2/5 text-center">22nd April 2021</td>
+                      <td class="w-2/5 text-center">22nd May 2021</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </section>
           )}
