@@ -36,20 +36,20 @@ export default function Nhood() {
   }, [router.isReady]);
 
   const handleAuthModalVisibility = (isAuthVisible) => {
-    setData(combineData(data, { isAuthVisible }));
+    setData((data) => combineData(data, { isAuthVisible }));
   };
 
   const toggleMobileMenuVisibility = () => {
     let { isMobileMenuVisible } = data;
     isMobileMenuVisible = !isMobileMenuVisible;
-    setData((data) => combineData(data, { isMobileMenuVisible }));
+    setData(combineData(data, { isMobileMenuVisible }));
   };
 
   const handleFetchSelectedGym = async () => {
     // const { tag } = router?.query;
     await getSelectedGym({ tag: "NHOOD GYM" })
       .then((response) => {
-       if (response && response?.success) {
+        if (response && response?.success) {
           const { gym, plans, gymBanners } = response?.payload;
           setData(combineData(data, { isLoading: false, plans }));
         } else {
@@ -74,13 +74,13 @@ export default function Nhood() {
     console.log(reference);
   };
 
-  const PaystackButton = () => {
+  const PaystackButton = ({ plan }) => {
     const { email } = cookies?.user || {};
 
     const config = {
       reference: new Date().getTime(),
       email,
-      amount: getAmount(),
+      amount: getAmount(plan),
       publicKey: publicRuntimeConfig.PAYSTACK_PUBLIC_KEY,
     };
 
@@ -90,8 +90,9 @@ export default function Nhood() {
       <div className="flex justify-center">
         <button
           className="uppercase text-sm bg-custom-106 text-white rounded-full px-8 py-3 sm:text-xs"
-          onClick={() => {
+          onClick={async () => {
             if (checkUserLogin()) {
+              await setData(combineData(data, { selectedPlan: plan }));
               initializePayment(onSuccess);
             } else {
               setData(combineData(data, { isAuthVisible: true }));
@@ -104,8 +105,8 @@ export default function Nhood() {
     );
   };
 
-  const getAmount = () => {
-    let num = data?.selectedPlan?.price || 0;
+  const getAmount = (selectedPlan) => {
+    let num = selectedPlan?.price || 0;
     num = num * 100;
     return num;
   };
@@ -120,53 +121,10 @@ export default function Nhood() {
         <NhoodHeader
           toggleMobileMenuVisibility={() => toggleMobileMenuVisibility()}
           isMobileMenuVisible={data?.isMobileMenuVisible}
+          handleAuthModalVisibility={(isAuthVisible) =>
+            handleAuthModalVisibility(isAuthVisible)
+          }
         />
-        {/* {data?.isMobileMenuVisible ? (
-          <section className="fixed top-0 h-full w-full flex z-100">
-            <nav className="w-7/10 bg-black p-8">
-              <IoMdClose
-                className="text-gray-600 h-6 w-6 ml-auto mb-16"
-                onClick={() => toggleMobileMenuVisibility()}
-              />
-              <ul className="flex flex-col items-center text-sm">
-                <li className="text-white mb-8">
-                  <span onClick={() => toggleMobileMenuVisibility()}>Home</span>
-                </li>
-                <li className="text-white mb-8">
-                  <a
-                    href="#services"
-                    onClick={() => toggleMobileMenuVisibility()}
-                  >
-                    Services
-                  </a>
-                </li>
-                <li className="text-white mb-8">
-                  <a
-                    href="#pricing"
-                    onClick={() => toggleMobileMenuVisibility()}
-                  >
-                    Make a Booking
-                  </a>
-                </li>
-                <li className="text-white mb-8">
-                  <a
-                    href="#contact"
-                    onClick={() => toggleMobileMenuVisibility()}
-                  >
-                    Contact
-                  </a>
-                </li>
-                <li className="border-1 border-custom-104 text-custom-104 px-6 py-1 rounded-sm cursor-pointer">
-                  <span>Login</span>
-                </li>
-              </ul>
-            </nav>
-            <div
-              className="w-3/10 bg-gray-900 bg-opacity-50"
-              onClick={() => toggleMobileMenuVisibility()}
-            ></div>
-          </section>
-        ) : null} */}
         <div className="pt-20">
           <section className="relative w-full h-128" id="home">
             <img
@@ -465,7 +423,7 @@ export default function Nhood() {
                       Get Supplements
                     </span>
                   </div>
-                  <PaystackButton />
+                  <PaystackButton plan={plan} />
                 </div>
               ))}
             </div>

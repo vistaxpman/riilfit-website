@@ -21,7 +21,7 @@ export default function Auth({ onCloseAuthModal }) {
 
   return (
     <div
-      className="fixed z-10 inset-0 bg-black bg-opacity-70 w-full h-full px-96 py-28"
+      className="fixed z-100 inset-0 bg-black bg-opacity-70 w-full h-full px-96 py-28"
       id="dialog"
       role="dialog"
       aria-modal="true"

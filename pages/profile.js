@@ -125,29 +125,29 @@ export default function Profile() {
                 </div>
               </div>
               <div className="w-1/3.5 border-1 border-gray-300 rounded-md sm:w-full">
-                <table class="table-fixed w-full">
+                <table className="table-fixed w-full">
                   <thead>
                     <tr className="h-16 bg-gray-100">
-                      <th class="w-1/5 text-center">Plan</th>
-                      <th class="w-2/5 text-center">Subscribed On</th>
-                      <th class="w-2/5 text-center">Expiry</th>
+                      <th className="w-1/5 text-center">Plan</th>
+                      <th className="w-2/5 text-center">Subscribed On</th>
+                      <th className="w-2/5 text-center">Expiry</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-t-1 border-gray-300 h-16">
-                      <td class="w-1/5 text-center">Daily</td>
-                      <td class="w-2/5 text-center">12th April 2021</td>
-                      <td class="w-2/5 text-center">13th April 2021</td>
+                      <td className="w-1/5 text-center">Daily</td>
+                      <td className="w-2/5 text-center">12th April 2021</td>
+                      <td className="w-2/5 text-center">13th April 2021</td>
                     </tr>
                     <tr className="border-t-1 border-gray-300 h-16">
-                      <td class="w-1/5 text-center">Weekly</td>
-                      <td class="w-2/5 text-center">14th April 2021</td>
-                      <td class="w-2/5 text-center">21th April 2021</td>
+                      <td className="w-1/5 text-center">Weekly</td>
+                      <td className="w-2/5 text-center">14th April 2021</td>
+                      <td className="w-2/5 text-center">21th April 2021</td>
                     </tr>
                     <tr className="border-t-1 border-gray-300 h-16">
-                      <td class="w-1/5 text-center">Daily</td>
-                      <td class="w-2/5 text-center">22nd April 2021</td>
-                      <td class="w-2/5 text-center">22nd May 2021</td>
+                      <td className="w-1/5 text-center">Daily</td>
+                      <td className="w-2/5 text-center">22nd April 2021</td>
+                      <td className="w-2/5 text-center">22nd May 2021</td>
                     </tr>
                   </tbody>
                 </table>

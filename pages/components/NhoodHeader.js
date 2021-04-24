@@ -8,6 +8,7 @@ import { IoMdClose } from "react-icons/io";
 export default function NhoodHeader({
   toggleMobileMenuVisibility,
   isMobileMenuVisible,
+  handleAuthModalVisibility,
 }) {
   const router = useRouter();
   const [cookies, setCookie, removeCookie] = useCookies() || {};
@@ -26,19 +27,15 @@ export default function NhoodHeader({
       path: "/",
       sameSite: true,
     });
-    router.replace("/");
+    router.replace("/nhood");
   };
 
   const checkUserLogin = () => {
     return cookies && cookies?.user;
   };
 
-  const handleAuthModalVisibility = (isAuthVisible) => {
-    setData(combineData(data, { isAuthVisible }));
-  };
-
   const handleCheckRoute = () => {
-    console.log(router?.query);
+    // console.log(router?.query);
   };
 
   return (
@@ -153,7 +150,10 @@ export default function NhoodHeader({
                 </li>
               ) : (
                 <li
-                  onClick={() => handleAuthModalVisibility(true)}
+                  onClick={async () => {
+                    await toggleMobileMenuVisibility();
+                    handleAuthModalVisibility(true);
+                  }}
                   className="border-1 border-custom-104 text-custom-104 px-6 py-1 rounded-sm cursor-pointer"
                 >
                   <span>Login</span>
