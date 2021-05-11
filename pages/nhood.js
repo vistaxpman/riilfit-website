@@ -63,7 +63,11 @@ export default function Nhood() {
 	};
 
 	const checkUserLogin = () => {
-		return cookies && cookies?.user;
+		let value;
+		if (cookies && cookies?.user) {
+			value = true;
+		}
+		return value;
 	};
 
 	const onSuccess = (reference) => {
@@ -86,12 +90,13 @@ export default function Nhood() {
 			<div className="flex justify-center">
 				<button
 					className="uppercase text-sm bg-custom-106 text-white rounded-full px-8 py-3 sm:text-xs"
-					onClick={async () => {
+					onClick={(e) => {
+						e.preventDefault();
 						if (checkUserLogin()) {
-							await setData(combineData(data, { selectedPlan: plan }));
+							setData((data) => combineData(data, { selectedPlan: plan }));
 							initializePayment(onSuccess);
 						} else {
-							setData(combineData(data, { isAuthVisible: true }));
+							setData((data) => combineData(data, { isAuthVisible: true }));
 						}
 					}}
 				>
@@ -453,7 +458,10 @@ export default function Nhood() {
 								/>
 								<img className="h-48 w-1/2 object-cover" src="/assets/nhood/services/app_img2.svg" />
 							</div>
-							<img className="h-96 w-1/2 object-cover sm:w-full" src="/assets/nhood/services/app_img3.svg" />
+							<img
+								className="h-96 w-1/2 object-cover sm:w-full"
+								src="/assets/nhood/services/app_img3.svg"
+							/>
 						</div>
 					</section>
 					<section className="flex flex-col justify-center items-center py-24 bg-custom-107">
