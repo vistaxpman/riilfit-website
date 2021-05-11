@@ -354,6 +354,7 @@ module.exports = {
       1: "2rem",
       "-1": "-2rem",
       2: "4rem",
+      3: "5rem",
       4: "6rem",
       10: "8rem",
       64: "16rem",

@@ -5,5 +5,5 @@ module.exports = {
     ASSETS_URL: process.env.ASSETS_URL,
     PAYSTACK_PUBLIC_KEY: process.env.PAYSTACK_PUBLIC_KEY,
   },
-  trailingSlash: true
+  trailingSlash: false
 };

@@ -59,7 +59,7 @@ export default function Nhood() {
 	};
 
 	const handleSelectPlan = (selectedPlan) => {
-		setData(combineData(data, { selectedPlan }));
+		setData((data) => combineData(data, { selectedPlan }));
 	};
 
 	const checkUserLogin = () => {
@@ -93,10 +93,10 @@ export default function Nhood() {
 					onClick={(e) => {
 						e.preventDefault();
 						if (checkUserLogin()) {
-							setData((data) => combineData(data, { selectedPlan: plan }));
+							setData(combineData(data, { selectedPlan: plan }));
 							initializePayment(onSuccess);
 						} else {
-							setData((data) => combineData(data, { isAuthVisible: true }));
+							setData(combineData(data, { isAuthVisible: true }));
 						}
 					}}
 				>
@@ -132,9 +132,8 @@ export default function Nhood() {
 								<h2 className="text-white text-5xl font-bold uppercase leading-10">Challenge</h2>
 								<h2 className="text-white text-5xl font-bold uppercase">Yourself</h2>
 								<h2 className="text-sm text-white mb-6">
-									Our rigs are used by serious gyms for serious fitness. We take training to the next
-									level with bespoke cooperative service, design and fit out to ensure your gym is
-									filled with the best possible rig equipment to your specifications.
+									Improve your health, wellbeing, productivity and performance with the leaders in
+									wellness solutions- NEIGHBOURHOOD GYM.
 								</h2>
 								<div className="flex items-center">
 									<button className="flex justify-center items-center rounded-full w-40 py-2 text-white bg-custom-106 mr-8">
@@ -178,21 +177,27 @@ export default function Nhood() {
 						</div>
 					</section>
 					<section className="flex justify-center">
-						<div className="w-7/10 flex items-center justify-center py-20 flex-wrap sm:w-full">
-							<div className="w-1/2 flex flex-col sm:w-8/10">
+						<div className="w-8/10 flex items-center justify-center py-20 flex-wrap sm:w-full">
+							<div className="w-3/10 flex flex-col sm:w-8/10">
 								<h2 className="text-3xl font-bold uppercase leading-8 mb-8">ABOUT US</h2>
-								<span className="text-gray-700 leading-6 mb-6 mr-2">
-									Our rigs are used by serious gyms for serious fitness. We take training to the next
-									level with bespoke cooperative service, design and fit out to ensure your gym is
-									filled with the best possible rig equipment to your specifications. Our rigs are
-									used by serious gyms for serious fitness. We take training to the next level with
-									bespoke cooperative service, design and fit out to ensure your gym
+								<span className="text-gray-700 leading-6 mb-6 text-sm">
+									Improve your health, wellbeing,productivity and performance with the leaders in
+									wellness solutions - NEIGHBOURHOOD GYM.
+								</span>
+								<span className="text-gray-700 leading-6 mb-6 text-sm">
+									We bring tech, health and joy in a fully integrated and holistic wellness
+									solution.,offering what is easily accessible, affordable and designed to be focused
+									on an individual's specific needs. WE EMPOWER PEOPLE TO BE THEIR VERY BEST!!!
+								</span>
+								<span className="text-gray-700 leading-6 text-sm">
+									TRANSFORM YOUR BODY N MIND; START YOUR JOURNEY TO A STRESS FREE, HAPPY, POSITIVE,
+									HEALTHIER AND BETTER YOU!!!
 								</span>
 							</div>
-							<div className="w-1/2 flex justify-center sm:w-full sm:mt-32">
+							<div className="w-3/10 flex justify-center sm:w-full sm:mt-32">
 								<div className="flex relative">
 									<img className="w-80 h-80 object-contain z-10" src="/assets/nhood/about-us.svg" />
-									<div className="w-56 h-80 bg-custom-106 absolute -top-1 left-4"></div>
+									<div className="w-56 h-80 bg-custom-106 absolute -top-1 left-3"></div>
 								</div>
 							</div>
 						</div>
@@ -214,9 +219,11 @@ export default function Nhood() {
 								<img className="w-full h-64 object-cover" src="/assets/nhood/services/services2.svg" />
 								<div className="absolute top-0.5 bg-custom-106 bg-opacity-80 flex flex-col items-center justify-center h-4/5.5 w-4/5.5 sm:h-9/10">
 									<span className="text-white font-bold text-md mb-4">Nhood gym services</span>
-									<span className="text-white text-center text-sm sm:hidden">
-										Nhood gym services are the best in town and offer a wide range of opportunities
-										to our users to help them get fitter.
+									<span className="text-white text-center text-xs sm:hidden">
+										We bring tech, health and joy in a fully integrated and holistic wellness
+										solution.,offering what is easily accessible, affordable and designed to be
+										focused on an individual's specific needs. WE EMPOWER PEOPLE TO BE THEIR VERY
+										BEST!!!
 									</span>
 								</div>
 							</div>
@@ -271,7 +278,7 @@ export default function Nhood() {
 						</div>
 					</section>
 					<section className="w-full flex flex-col items-center py-24">
-						<div className="w-1/2 flex flex-wrap justify-center mb-20 sm:w-8/10">
+						<div className="w-1/2 flex flex-wrap justify-center mb-28 sm:w-8/10">
 							<div className="w-2.5/5 mr-10 flex justify-center items-center relative sm:w-full sm:mr-0 sm:mb-10">
 								<img
 									className="w-64 h-64 object-cover z-10"
@@ -281,49 +288,70 @@ export default function Nhood() {
 							</div>
 							<div className="w-2.5/5 flex flex-col justify-center sm:w-8/10">
 								<h2 className="text-3xl font-bold leading-8 mb-8">Yoga Classes</h2>
-								<span className="text-sm">
-									Our rigs are used by serious gyms for serious fitness. We take training to the next
-									level with bespoke cooperative service, design and fit out to ensure your gym is
-									filled with the best possible rig equipment to your specifications.
+								<span className="text-xs">
+									Optimize your mental health.,improve strength, balance and flexibility with our
+									phenomenal yoga sessions, every friday 8am.
 								</span>
 							</div>
 						</div>
 						<div className="w-1/2 flex flex-wrap justify-center sm:w-8/10">
-							<div className="w-2.5/5 flex flex-col justify-center mr-10 sm:w-8/10 sm:mr-0 sm:mb-10">
-								<h2 className="text-3xl font-bold leading-8 mb-8">Zumba Dance</h2>
-								<span className="text-sm">
-									Our rigs are used by serious gyms for serious fitness. We take training to the next
-									level with bespoke cooperative service, design and fit out to ensure your gym is
-									filled with the best possible rig equipment to your specifications.
-								</span>
+							<div className="w-2.5/5 flex flex-col  justify-center h-80 mr-10 sm:w-8/10 sm:mr-0 sm:mb-10">
+								<div className="flex flex-col justify-center mb-6">
+									<h2 className="text-3xl font-bold leading-8 mb-2">Zumba Dance</h2>
+									<span className="text-sm">
+										Loose yourself in the music.,have fun and get your body in shape as you
+										subscribe to our scintillating classic zumba dance exercises... Every Sunday 2pm
+									</span>
+								</div>
+								<div className="flex flex-col justify-center">
+									<h2 className="text-3xl font-bold leading-8 mb-2">Indulge Massage</h2>
+									<span className="text-sm">
+										Feel the deepest of relaxation, calm and reduction in stress levels, as you
+										access our world of invigorating and rejuvenating massage..Release those
+										endorphins dat boost ur vitality and wellbeing - only during our 12hr massage
+										parlor daily...
+									</span>
+								</div>
 							</div>
 							<div className="w-2.5/5 flex justify-center items-center sm:w-full">
-								<img className="w-64 h-64 object-cover" src="/assets/nhood/services/zumba-dance.svg" />
+								<img className="w-64 h-80 object-cover" src="/assets/nhood/services/zumba-dance.svg" />
 							</div>
 						</div>
 					</section>
 					<section className="flex flex-wrap">
-						<div className="w-2/5 h-128 bg-custom-106 flex flex-col items-center justify-center text-white sm:w-full">
-							<h3 className="uppercase text-2xl font-bold mb-6">UPCOMING events</h3>
-							<span className="text-sm w-1/2 leading-5 sm:text-center">
-								We provide you with upcoming events here, our events such as Karoke Night, Ladies night,
-								Walkout day, Pool party and lots more.
-							</span>
+						<div className="w-2/5 h-128 bg-custom-106 flex items-center justify-center text-white sm:w-full">
+							<div className="flex flex-col  w-1/2">
+								<h3 className="uppercase text-2xl font-bold mb-6 inline">our events</h3>
+								<span className="text-sm leading-5 sm:text-center">
+									We provide you with upcoming events here, our events such as Karoke Night, Ladies
+									night, Walkout day, Pool party and lots more.
+								</span>
+							</div>
 						</div>
 						<div className="w-3/5 h-128 flex items-center relative sm:w-full sm:px-2">
 							<div className="h-full w-16 bg-custom-106 absolute sm:hidden"></div>
-							<div className="w-full flex">
-								<div className="flex flex-col bg-white z-10 mr-12 sm:mr-4 w-72">
+							<div className="w-full flex overflow-y-auto ">
+								<div className="flex flex-col bg-white z-10 w-72 mr-10 sm:mr-4">
 									<img
 										className="h-72 w-72 object-cover mb-2"
 										src="/assets/nhood/services/event1.svg"
 									/>
 									<span className="font-bold leading-5 sm:text-sm">
-										Minute Full Body Stretch Enim
+										Body Building Dynamics Championship
 									</span>
-									<span className="text-sm opacity-70  sm:text-xs">20 September 2021</span>
+									<span className="text-sm opacity-70 sm:text-xs">Upcoming</span>
 								</div>
-								<div className="flex flex-col bg-white z-10 mr-16 w-72">
+								<div className="flex flex-col bg-white z-10 w-72 mr-10 sm:mr-4">
+									<img
+										className="h-72 w-72 object-cover mb-2"
+										src="/assets/nhood/services/event2.svg"
+									/>
+									<span className="font-bold leading-5 sm:text-sm">
+										Swimming Pool &amp; Table Tennis Compteition
+									</span>
+									<span className="text-sm opacity-70  sm:text-xs">Past</span>
+								</div>
+								<div className="flex flex-col bg-white z-10 w-72">
 									<img
 										className="h-72 w-72 object-cover mb-2"
 										src="/assets/nhood/services/event2.svg"
@@ -331,17 +359,7 @@ export default function Nhood() {
 									<span className="font-bold leading-5 sm:text-sm">
 										Minute Full Body Stretch Enim
 									</span>
-									<span className="text-sm opacity-70  sm:text-xs">20 September 2021</span>
-								</div>
-								<div className="flex flex-col bg-white z-10 mr-16 w-72">
-									<img
-										className="h-72 w-72 object-cover mb-2"
-										src="/assets/nhood/services/event2.svg"
-									/>
-									<span className="font-bold leading-5 sm:text-sm">
-										Minute Full Body Stretch Enim
-									</span>
-									<span className="text-sm opacity-70  sm:text-xs">20 September 2021</span>
+									<span className="text-sm opacity-70  sm:text-xs">20 September 2019</span>
 								</div>
 							</div>
 						</div>
@@ -442,12 +460,12 @@ export default function Nhood() {
 						</div>
 						<div className="w-1/2 h-100 bg-custom-107 flex items-center justify-center sm:w-full">
 							<img
-								className="w-full h-full object-contain"
+								className="w-full h-full object-cover"
 								src="/assets/nhood/services/app_screenshot.png"
 							/>
 						</div>
 					</section>
-					<section className="flex justify-center py-48 sm:py-24">
+					<section className="flex justify-center py-32 sm:py-20">
 						<div className="flex flex-wrap w-4/6 sm:w-9/10">
 							<div className="w-1/2 flex flex-wrap sm:w-full">
 								<img className="h-48 w-1/2 object-cover" src="/assets/nhood/services/event1.svg" />
