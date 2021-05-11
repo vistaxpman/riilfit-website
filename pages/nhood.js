@@ -126,7 +126,7 @@ export default function Nhood() {
 				/>
 				<div className="pt-20">
 					<section className="relative w-full h-128" id="home">
-						<img className="mx-auto w-full h-full object-cover" src="/assets/homepage/banner-image.jpg" />
+						<img className="mx-auto w-full h-full object-cover" src="/assets/homepage/banner-image.svg" />
 						<div className="absolute flex top-0 mt-28 ml-48 w-3/10 md:w-1/2 sm:w-8/10 sm:ml-8">
 							<div className="flex flex-col w-full">
 								<h2 className="text-white text-5xl font-bold uppercase leading-10">Challenge</h2>
