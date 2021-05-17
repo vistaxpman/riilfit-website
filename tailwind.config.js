@@ -156,6 +156,8 @@ module.exports = {
 				107: '#F0F0F0',
 				108: '#333333',
 				109: '#434343',
+				110: '#1d293f',
+				111: '#e2e4e8',
 			},
 		},
 		spacing: {
@@ -236,6 +238,7 @@ module.exports = {
 			xl: '0.75rem',
 			'2xl': '1rem',
 			'3xl': '1.5rem',
+			'4xl': '2rem',
 			'6xl': '3rem',
 			'10xl': '5rem',
 			full: '9999px',
@@ -308,6 +311,7 @@ module.exports = {
 			],
 			serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
 			mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
+			arial: ['Arial'],
 		},
 		fontSize: {
 			xs: '0.75rem',
@@ -431,6 +435,7 @@ module.exports = {
 			64: '16rem',
 			72: '18rem',
 			80: '20rem',
+			84: '22rem',
 			96: '24rem',
 			100: '28rem',
 			116: '30rem',
