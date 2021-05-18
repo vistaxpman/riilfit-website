@@ -21,7 +21,7 @@ export default function WhyChooseUs() {
 					Here is some reason why you <br /> should choose us
 				</span>
 				<div className="flex sm:flex-col sm:items-center">
-					<div className="w-2/5 flex flex-col h-64 rounded-md shadow-md p-4 bg-white mr-8 sm:mr-0 sm:w-4/5">
+					<div className="w-2/5 flex flex-col h-64 rounded-md shadow-md py-6 px-4 bg-white mr-8 sm:mr-0 sm:w-4/5 lg:h-72">
 						<div className="mb-auto">
 							<StarIcon className="text-custom-104 bg-custom-107 rounded-full h-8 w-8 p-1 flex items-center justify-center" />
 						</div>
@@ -32,7 +32,7 @@ export default function WhyChooseUs() {
 							best possible.
 						</span>
 					</div>
-					<div className="w-2/5 flex flex-col h-64 rounded-md shadow-md p-4 bg-white mt-20 sm:w-4/5">
+					<div className="w-2/5 flex flex-col h-64 rounded-md shadow-md py-6 px-4 bg-white mt-20 sm:w-4/5 lg:h-72">
 						<div className="mb-auto">
 							<CheckIcon className="text-custom-104 bg-custom-107 rounded-full h-8 w-8 p-1 flex items-center justify-center" />
 						</div>

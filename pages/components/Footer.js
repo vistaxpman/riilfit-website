@@ -5,8 +5,8 @@ import AppleIcon from 'mdi-react/AppleIcon';
 export default function Footer() {
 	return (
 		<footer className="flex flex-col bg-white px-20 pt-16 pb-12">
-			<div className="flex justify-between mb-12">
-				<div className="flex flex-col w-3/10">
+			<div className="flex justify-between mb-12 flex-wrap">
+				<div className="flex flex-col w-3/10 sm:w-full sm:mb-12">
 					<img className="w-48 h-20 object-contain mb-4" src="/assets/homepage/logo.svg" />
 					<h4 className="font-medium mb-2">Your business partner solutions</h4>
 					<span className="text-sm font-extralight mb-6 opacity-75">
@@ -28,7 +28,7 @@ export default function Footer() {
 						<span className="block text-sm w-64 opacity-90">+2349022169861</span>
 					</div>
 				</div>
-				<div className="flex flex-col w-1.5/12">
+				<div className="flex flex-col w-1.5/12 sm:w-full sm:mb-12">
 					<h2 className="flex items-center h-20 font-semibold">Quick Links</h2>
 					<nav className="text-sm">
 						<ul>
@@ -47,7 +47,7 @@ export default function Footer() {
 						</ul>
 					</nav>
 				</div>
-				<div className="flex flex-col w-1/4">
+				<div className="flex flex-col w-1/4 sm:w-full">
 					<span className="flex items-center h-20 text-custom-101 text-base font-medium">
 						Join over 15,000+ trainers
 					</span>
@@ -56,8 +56,8 @@ export default function Footer() {
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 						labore
 					</span>
-					<div className="flex justify-between items-center">
-						<div className="flex items-center border-1 border-gray-200 rounded-md px-3 py-1 hover:opacity-80 cursor-pointer">
+					<div className="flex justify-between items-center sm:justify-start">
+						<div className="flex items-center border-1 border-gray-200 rounded-md px-3 py-1 hover:opacity-80 cursor-pointer mr-4">
 							<GooglePlayIcon className="text-custom-102 mr-4 h-6 w-6" />
 							<div className="flex flex-col text-xs">
 								<span>Get Riilfit on</span>
@@ -74,7 +74,7 @@ export default function Footer() {
 					</div>
 				</div>
 			</div>
-			<span className="block text-center text-sm opacity-75">Riilfit.com - © 2021 All Rights Reserved</span>
+			<span className="block mt-4 text-sm opacity-75">Riilfit.com - © 2021 All Rights Reserved</span>
 		</footer>
 	);
 }

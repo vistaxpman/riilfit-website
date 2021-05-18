@@ -10,10 +10,10 @@ export default function HowWeBuild() {
 			<span className="font-semibold text-3xl leading-10 text-center capitalize mb-20">
 				Watch how we Build with Dreambodi
 			</span>
-			<div className="flex items-center justify-center">
-				<img src="/assets/homepage/row3-img.svg" className="h-84 w-1/4 object-cover mr-10" />
-				<div className="flex flex-col w-1/3.5">
-					<span className="font-semibold text-md leading-4 text-custom-101 mb-4">
+			<div className="flex flex-wrap items-center justify-center">
+				<img src="/assets/homepage/row3-img.svg" className="h-84 w-1/4 object-cover mr-10 sm:w-8/10 sm:mb-20 sm:mr-0" />
+				<div className="flex flex-col w-1/3.5 sm:w-full">
+					<span className="font-semibold text-md leading-4 text-custom-101 mb-4 sm:text-lg">
 						Join over 15,000+ trainer to train from home
 					</span>
 					<span className="font-arial font-extrabold text-4xl leading-10 tracking-tight mb-6 text-110 opacity-90">
