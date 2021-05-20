@@ -10,13 +10,13 @@ export default function OurClients() {
       <div
         className="wave-left"
         style={{
-          backgroundImage: `url(${publicRuntimeConfig.ASSETS_FOLDER}/homepage/wave-left.png)`,
+          backgroundImage: `url(${publicRuntimeConfig.ASSETS_URL}/homepage/wave-left.png)`,
         }}
       ></div>
       <div
         className="wave-right"
         style={{
-          backgroundImage: `url(${publicRuntimeConfig.ASSETS_FOLDER}/homepage/wave-right.png)`,
+          backgroundImage: `url(${publicRuntimeConfig.ASSETS_URL}/homepage/wave-right.png)`,
         }}
       ></div>
       <div className="row1-wrapper py-20 px-20">
@@ -36,19 +36,19 @@ export default function OurClients() {
           </div>
           <div className="flex flex-col w-3/5 h-full justify-center sm:w-full">
             <div>
-              <div>
+              <div className="shadow-lg">
                 <img
                   src="/assets/clients/skyfit-logo.svg"
                   className="w-4/5 h-3/5 object-contain"
                 />
               </div>
-              <div>
+              <div className="shadow-lg">
                 <img
                   src="/assets/clients/ifit-logo.svg"
                   className="w-4/5 h-3/5 object-contain"
                 />
               </div>
-              <div>
+              <div className="shadow-lg">
                 <img
                   src="/assets/clients/anvil-logo.svg"
                   className="w-4/5 h-3/5 object-contain"
@@ -56,13 +56,13 @@ export default function OurClients() {
               </div>
             </div>
             <div>
-              <div>
+              <div className="shadow-lg">
                 <img
                   src="/assets/clients/24fitness-logo.svg"
                   className="w-4/5 h-3/5 object-contain"
                 />
               </div>
-              <div>
+              <div className="shadow-lg">
                 <img
                   src="/assets/clients/dreambodi-logo.svg"
                   className="w-4/5 h-3/5 object-contain"
@@ -70,19 +70,19 @@ export default function OurClients() {
               </div>
             </div>
             <div>
-              <div>
+              <div className="shadow-lg">
                 <img
                   src="/assets/clients/ifit-logo.svg"
                   className="w-4/5 h-3/5 object-contain"
                 />
               </div>
-              <div>
+              <div className="shadow-lg">
                 <img
                   src="/assets/clients/ifitness-logo.svg"
                   className="w-4/5 h-3/5 object-contain"
                 />
               </div>
-              <div>
+              <div className="shadow-lg">
                 <img
                   src="/assets/clients/120+Gyms-logo.svg"
                   className="w-16 h-10 object-contain"

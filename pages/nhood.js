@@ -156,9 +156,9 @@ export default function Nhood() {
 									We make fitness fun, effective and simple. Our coaches lead the fitness industry
 									when it comes to helping people get into the best shape of their lives and reaching
 								</span>
-								<button className="text-white bg-black w-40 rounded-full py-3">
-									<a href="#pricing">Book Now</a>
-								</button>
+								<a href="#pricing" className="text-white bg-black w-40 rounded-full py-3 text-center">
+									Book Now
+								</a>
 							</div>
 						</div>
 						<div className="w-1/2 bg-black h-96 flex justify-center items-center sm:w-full">
@@ -170,9 +170,12 @@ export default function Nhood() {
 									We make fitness fun, effective and simple. Our coaches lead the fitness industry
 									when it comes to helping people get into the best shape of their lives and reaching
 								</span>
-								<button className="text-white bg-custom-106 w-40 rounded-full py-3">
-									<a href="#pricing">Book Now</a>
-								</button>
+								<a
+									href="#pricing"
+									className="text-white bg-custom-106 w-40 rounded-full py-3 text-center"
+								>
+									Book Now
+								</a>
 							</div>
 						</div>
 					</section>
@@ -278,7 +281,7 @@ export default function Nhood() {
 						</div>
 					</section>
 					<section className="w-full flex flex-col items-center py-24">
-						<div className="w-1/2 flex flex-wrap justify-center mb-28 sm:w-8/10">
+						<div className="w-3/5 flex flex-wrap justify-center mb-28 sm:w-8/10">
 							<div className="w-2.5/5 mr-10 flex justify-center items-center relative sm:w-full sm:mr-0 sm:mb-10">
 								<img
 									className="w-64 h-64 object-cover z-10"
@@ -288,33 +291,41 @@ export default function Nhood() {
 							</div>
 							<div className="w-2.5/5 flex flex-col justify-center sm:w-8/10">
 								<h2 className="text-3xl font-bold leading-8 mb-8">Yoga Classes</h2>
-								<span className="text-xs">
+								<span className="text-sm opacity-70">
 									Optimize your mental health.,improve strength, balance and flexibility with our
 									phenomenal yoga sessions, every friday 8am.
 								</span>
 							</div>
 						</div>
-						<div className="w-1/2 flex flex-wrap justify-center sm:w-8/10">
-							<div className="w-2.5/5 flex flex-col  justify-center h-80 mr-10 sm:w-8/10 sm:mr-0 sm:mb-10">
-								<div className="flex flex-col justify-center mb-6">
+						<div className="w-3/5 flex flex-wrap justify-center mb-28 sm:w-8/10">
+							<div className="w-2.5/5 flex flex-col justify-center h-80 mr-10 sm:w-8/10 sm:mr-0">
+								<div className="flex flex-col justify-center">
 									<h2 className="text-3xl font-bold leading-8 mb-2">Zumba Dance</h2>
-									<span className="text-sm">
+									<span className="text-sm opacity-70">
 										Loose yourself in the music.,have fun and get your body in shape as you
 										subscribe to our scintillating classic zumba dance exercises... Every Sunday 2pm
-									</span>
-								</div>
-								<div className="flex flex-col justify-center">
-									<h2 className="text-3xl font-bold leading-8 mb-2">Indulge Massage</h2>
-									<span className="text-sm">
-										Feel the deepest of relaxation, calm and reduction in stress levels, as you
-										access our world of invigorating and rejuvenating massage..Release those
-										endorphins dat boost ur vitality and wellbeing - only during our 12hr massage
-										parlor daily...
 									</span>
 								</div>
 							</div>
 							<div className="w-2.5/5 flex justify-center items-center sm:w-full">
 								<img className="w-64 h-80 object-cover" src="/assets/nhood/services/zumba-dance.svg" />
+							</div>
+						</div>
+						<div className="w-3/5 flex flex-wrap justify-center sm:w-8/10 mb-12">
+							<div className="w-2.5/5 mr-10 flex justify-center items-center relative sm:w-full sm:mr-0 sm:mb-10">
+								<img
+									className="w-64 h-64 object-cover z-10"
+									src="/assets/nhood/services/yoga-classes.svg"
+								/>
+								<div className="absolute top-1 left-2 bg-custom-106 w-64 h-64 md:hidden sm:hidden"></div>
+							</div>
+							<div className="w-2.5/5 flex flex-col justify-center sm:w-8/10">
+								<h2 className="text-3xl font-bold leading-8 mb-8">Indulge Massage</h2>
+								<span className="text-sm opacity-70">
+									Feel the deepest of relaxation, calm and reduction in stress levels, as you access
+									our world of invigorating and rejuvenating massage..Release those endorphins dat
+									boost ur vitality and wellbeing - only during our 12hr massage parlor daily...
+								</span>
 							</div>
 						</div>
 					</section>

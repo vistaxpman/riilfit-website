@@ -5,7 +5,7 @@ import AppleIcon from 'mdi-react/AppleIcon';
 
 export default function HowWeBuild() {
 	return (
-		<section className="flex flex-col py-6 px-24 items-center">
+		<section className="flex flex-col pt-10 px-24 pb-24 items-center">
 			<img src="/assets/homepage/row3-icon1.svg" className="h-8 w-8" />
 			<span className="font-semibold text-3xl leading-10 text-center capitalize mb-20">
 				Watch how we Build with Dreambodi

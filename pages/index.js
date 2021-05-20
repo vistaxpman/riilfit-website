@@ -11,9 +11,9 @@ import WhyChooseUs from './components/WhyChooseUs';
 import OurClients from './components/OurClients';
 import { combineData } from '../utils';
 
-const { publicRuntimeConfig } = getConfig();
-
 export default function Home() {
+	const { publicRuntimeConfig } = getConfig();
+
 	const [data, setData] = useState({
 		gyms: [],
 	});
@@ -52,7 +52,7 @@ export default function Home() {
 					<HowWeBuild />
 					<section className="px-64 py-10 flex flex-col items-center sm:px-0">
 						<h1 className="text-4xl font-medium mb-2">What Our Partners say</h1>
-						<span className="w-2/5 text-center text-sm mb-6 sm:mb-16">
+						<span className="w-3/5 text-center text-sm mb-16">
 							It has been a real pleasure partnering with Riilfit sports as they guided us through the set
 							up and commission of our gym center.
 						</span>
@@ -81,6 +81,13 @@ export default function Home() {
 							</div>
 						</div>
 					</section>
+					{/* <div
+						className="h-16"
+						style={{
+							backgroundImage: `url(${publicRuntimeConfig.ASSETS_URL}/homepage/curve.svg)`,
+						}}
+					></div> */}
+					<img className="flex object-contain max-h-20 w-full" src="/assets/homepage/curve.svg" />
 					<section className="bg-custom-103 py-16">
 						<div className="w-1/2 pl-8">
 							<h2 className="text-2xl font-semibold mb-2">Subscribe to our Newsletter</h2>
