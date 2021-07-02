@@ -66,7 +66,7 @@ export default function Profile() {
           const { email } = client || {};
           let qrCode;
           if (email) {
-            qrCode = await QRCode.toDataURL("email");
+            qrCode = await QRCode.toDataURL(email);
           }
           setData(combineData(data, { isLoading: false, client, qrCode }));
         } else {

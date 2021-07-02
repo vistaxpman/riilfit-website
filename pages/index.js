@@ -114,6 +114,11 @@ export default function Home() {
 	);
 }
 
+Home.getInitialProps = ({ query }) => {
+	console.log('oops');
+	return {};
+};
+
 const Wrapper = styled.main`
 	display: flex;
 	flex-direction: column;
